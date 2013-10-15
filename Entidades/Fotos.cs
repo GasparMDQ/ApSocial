@@ -16,10 +16,11 @@ namespace ApSocial.Entidades
             get { return id; }
             set { id = value; }
         }
-
-        public Fotos()
+        public Fotos(string nombre, string url, List<Usuario> usuarios_etiquetados)
         {
-
+            this.nombre = nombre;
+            this.url = url;
+            this.usuarios_etiquetados = usuarios_etiquetados;
         }
 
         ~Fotos()

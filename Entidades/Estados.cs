@@ -12,6 +12,14 @@ namespace ApSocial.Entidades
         {
 
         }
+        public Estados(Fotos foto_estado, DateTime fecha_creado, string mensaje, bool publico, int usuario_origen)
+        {
+            this.Fecha_creado = fecha_creado;
+            this.foto_estado = foto_estado;
+            this.Mensaje = mensaje;
+            this.Publico = publico;
+            this.Usuario_origen = usuario_origen;
+        }
 
         ~Estados()
         {
