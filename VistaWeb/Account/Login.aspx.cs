@@ -24,6 +24,7 @@ namespace VistaWeb.Account
         {
             try {
                 Session["usuarioLogueado"] = controladora.isCredentialValid(LoginUser.UserName, LoginUser.Password);
+                e.Authenticated = true;
                 FormsAuthentication.RedirectFromLoginPage(((Usuario)controladora.getUsuarioById(Convert.ToInt32(Session["usuarioLogueado"]))).ToString(), LoginUser.RememberMeSet);
             } catch (Exception ex) {
                 LoginUser.FailureText = ex.Message;
