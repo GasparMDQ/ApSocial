@@ -107,11 +107,12 @@ namespace ApSocial.Controladora.Publicaciones
                 {
                     publicacionesPrivadas = this.getPublicacionesPrivadasByIdUsuario(usuario.Id);
                     foreach (Publicacion publicacion in publicacionesPrivadas) { 
-                        if( daoUsuarioGrupo.perteneceAlGrupo(idUsuario, publicacion.Grupo_destino){
+                        if( daoUsuarioGrupo.perteneceAlGrupo(idUsuario, publicacion.Grupo_destino)){
                             publicacionesFiltradas.Add(publicacion);
                         }
                     }
-                }return publicacionesFiltradas;
+                }
+                return publicacionesFiltradas;
             }catch (Exception ex)
             {
                 throw ex;
@@ -154,6 +155,9 @@ namespace ApSocial.Controladora.Publicaciones
                 //listaPublicaciones.OrderBy(
                 return listaPublicaciones;
 
+            }
+            catch (Exception ex) { 
+                throw  ex; 
             }
         }
 
