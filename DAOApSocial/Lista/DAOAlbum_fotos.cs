@@ -6,7 +6,7 @@ using ApSocial.Entidades;
 
 namespace ApSocial.DAO.Lista
 {
-    class DAOAlbum_fotos:IDAO <Album_fotos>
+    public class DAOAlbum_fotos:IDAO <Album_fotos>
     {
         List<Album_fotos> listaAlbum = new List<Album_fotos>();
         int contadorAlbum = 0;

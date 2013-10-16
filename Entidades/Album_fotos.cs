@@ -8,9 +8,13 @@ namespace ApSocial.Entidades
 
         public List<Fotos> fotos;
 
-        public Album_fotos()
+        public Album_fotos(DateTime fecha_creado, string mensaje, bool publico, int usuario_origen, List<Fotos> lista)
         {
-
+            this.Fecha_creado = fecha_creado;
+            this.Mensaje = mensaje;
+            this.Publico = publico;
+            this.Usuario_origen = usuario_origen;
+            this.fotos = lista;
         }
 
         ~Album_fotos()

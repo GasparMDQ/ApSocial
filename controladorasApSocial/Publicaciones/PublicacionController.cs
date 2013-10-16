@@ -20,6 +20,7 @@ namespace ApSocial.Controladora.Publicaciones
         private DAOUsuario_Grupo daoUsuarioGrupo = DAOUsuario_Grupo.Instance();
         private DAOFotos daoFotos = DAOFotos.Instance();
         private DAOEstados daoEstados = DAOEstados.Instance();
+        private DAOAlbum_fotos daoAlbum = DAOAlbum_fotos.Instance();
 
         public bool isPublic(Publicacion publicacion)
         {
@@ -137,13 +138,17 @@ namespace ApSocial.Controladora.Publicaciones
 
         }
 
-        /*  public void nuevoAlbum(string mensaje, bool publico, int usuario_origen, List<Fotos> lista_fotos){
+         public void nuevoAlbum(string mensaje, bool publico, int usuario_origen, List<Fotos> lista_fotos){
               Album_fotos album;
-              try {
-
+              try
+              {
                   album = new Album_fotos(DateTime.Today, mensaje, publico, usuario_origen, lista_fotos);
+                  daoAlbum.add(album);
               }
-          }*/
+              catch (Exception ex) {
+                  throw ex;
+              }
+          }
 
         public List<Publicacion> verMuro(int usuarioId)
         {
@@ -152,7 +157,7 @@ namespace ApSocial.Controladora.Publicaciones
             {
                 listaPublicaciones = this.getPublicacionesPublicasDeMisAmigos(usuarioId);
                 listaPublicaciones.Concat(getPublicacionesPublicasByIDUsuario(usuarioId));//falta ordenar la lista 
-                //listaPublicaciones.OrderBy(
+                //listaPublicaciones.Sort(
                 return listaPublicaciones;
 
             }
