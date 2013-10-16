@@ -30,6 +30,7 @@ namespace ApSocial.Entidades
             this.Residencia = residencia;
             this.FechaDeNacimiento = fdn;
             this.Foto_usuario = foto;
+            this.Foto_stream = null;
             
             this.enabled = true;
         }
@@ -105,6 +106,12 @@ namespace ApSocial.Entidades
         public void Disable()
         {
             this.enabled = false;
+        }
+
+        public byte[] Foto_stream
+        {
+            get { return foto_stream; }
+            set { foto_stream = value; }
         }
 
 

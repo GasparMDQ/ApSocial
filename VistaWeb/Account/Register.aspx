@@ -87,7 +87,8 @@
         </fieldset>
         <p class="submitButton">
             <asp:Button ID="CreateUserButton" runat="server" Text="Crear usuario" 
-                    ValidationGroup="RegisterUserValidationGroup"/>
+                    ValidationGroup="RegisterUserValidationGroup" 
+                onclick="CreateUserButton_Click"/>
         </p>
     </div>
 </asp:Content>

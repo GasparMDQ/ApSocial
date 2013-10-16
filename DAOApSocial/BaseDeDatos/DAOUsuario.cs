@@ -23,7 +23,7 @@ namespace ApSocial.DAO.BaseDeDatos
 
         public List<Usuario> getAll()
         {
-            string cmdText = "SELECT id, apellido, email, fechaDeNacimiento, nombre, password, residencia, foto_usuario, enabled FROM usuarios";
+            string cmdText = "SELECT id, apellido, email, fechaDeNacimiento, nombre, password, residencia, foto_usuario, enabled, foto_stream FROM usuarios";
             try {
                 return this.searchBy(cmdText);
             } catch (Exception ex) {
@@ -33,7 +33,7 @@ namespace ApSocial.DAO.BaseDeDatos
 
         public void add(Usuario usuario)
         {
-            string cmdText = "insert into usuarios (apellido, nombre, email, password, residencia, foto_usuario, fechaDeNacimiento, enabled) values (@Apellido,@Nombre,@Email,@Password,@Residencia,@FotoUsuario,@FechaDeNacimiento,@Enabled)";
+            string cmdText = "insert into usuarios (apellido, nombre, email, password, residencia, foto_usuario, fechaDeNacimiento, enabled, foto_stream) values (@Apellido,@Nombre,@Email,@Password,@Residencia,@FotoUsuario,@FechaDeNacimiento,@Enabled,@fotoStream)";
             Dictionary<string, Object> parametros = new Dictionary<string, Object>();
             parametros.Add("@Apellido", usuario.Apellido);
             parametros.Add("@Nombre", usuario.Nombre);
@@ -43,7 +43,9 @@ namespace ApSocial.DAO.BaseDeDatos
             parametros.Add("@FotoUsuario", usuario.Foto_usuario);
             parametros.Add("@FechaDeNacimiento", usuario.FechaDeNacimiento);
             parametros.Add("@Enabled", usuario.isEnabled());
-            try {
+            parametros.Add("@FotoStream", (object)usuario.Foto_stream ?? DBNull.Value);
+            try
+            {
                 this.setData(cmdText, parametros);
             } catch (Exception ex) {
                 throw new Exception("No se pudo insertar el usuario en la base de datos", ex);
@@ -87,7 +89,7 @@ namespace ApSocial.DAO.BaseDeDatos
 
         public Usuario searchById(int id)
         {
-            string cmdText = "SELECT id, apellido, email, fechaDeNacimiento, nombre, password, residencia, foto_usuario, enabled FROM usuarios WHERE id = " + Convert.ToString(id);
+            string cmdText = "SELECT id, apellido, email, fechaDeNacimiento, nombre, password, residencia, foto_usuario, enabled, foto_stream FROM usuarios WHERE id = " + Convert.ToString(id);
             try
             {
                 Usuario usuario = this.searchOneBy(cmdText);
@@ -101,7 +103,7 @@ namespace ApSocial.DAO.BaseDeDatos
 
         public Usuario searchOneByEmail(string email)
         {
-            string cmdText = "SELECT id, apellido, email, fechaDeNacimiento, nombre, password, residencia, foto_usuario, enabled FROM usuarios WHERE email = \'"+email+"\'";
+            string cmdText = "SELECT id, apellido, email, fechaDeNacimiento, nombre, password, residencia, foto_usuario, enabled, foto_stream FROM usuarios WHERE email = \'"+email+"\'";
             try {
                 Usuario usuario = this.searchOneBy(cmdText);
                 return usuario;
@@ -133,7 +135,7 @@ namespace ApSocial.DAO.BaseDeDatos
 
         public void modify(Usuario usuario)
         {
-            string cmdText = "update usuarios set apellido = @Apellido, nombre = @Nombre, email = @Email, password = @Password, residencia = @Residencia, foto_usuario = @FotoUsuario, fechaDeNacimiento = @FechaDeNacimiento, enabled = @Enabled WHERE id = @UsuarioId";
+            string cmdText = "update usuarios set apellido = @Apellido, nombre = @Nombre, email = @Email, password = @Password, residencia = @Residencia, foto_usuario = @FotoUsuario, fechaDeNacimiento = @FechaDeNacimiento, enabled = @Enabled, foto_stream = @FotoStream WHERE id = @UsuarioId";
             Dictionary<string, Object> parametros = new Dictionary<string, Object>();
             parametros.Add("@Apellido", usuario.Apellido);
             parametros.Add("@Nombre", usuario.Nombre);
@@ -143,6 +145,7 @@ namespace ApSocial.DAO.BaseDeDatos
             parametros.Add("@FotoUsuario", usuario.Foto_usuario);
             parametros.Add("@FechaDeNacimiento", usuario.FechaDeNacimiento);
             parametros.Add("@Enabled", usuario.isEnabled());
+            parametros.Add("@FotoStream", usuario.Foto_stream);
             parametros.Add("@UsuarioId", usuario.Id);
             try {
                 this.setData(cmdText, parametros);
@@ -176,6 +179,9 @@ namespace ApSocial.DAO.BaseDeDatos
 
             //Verifico si el usuario fue borrado (logicamente) o no
             if (!(bool)dr["enabled"]) { usuario.Disable(); }
+
+            //Agrego el Stream de la Foto
+            usuario.Foto_stream = (byte[])dr["foto_stream"];
 
             //Devuelvo el usuario obtenido
             return usuario;

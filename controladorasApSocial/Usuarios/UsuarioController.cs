@@ -13,6 +13,24 @@ namespace ApSocial.Controladora.Usuarios
     {
         DAOUsuario dataUsuario = DAOUsuario.Instance();
 
+        public void nuevoUsuario(string email, string password, string password_check, string nombre, string apellido, string residencia, DateTime fdn, string foto, byte[] foto_stream)
+        {
+            Usuario usuario = new Usuario(apellido, nombre, email, password, residencia, fdn, foto);
+            usuario.Foto_stream = foto_stream;
+
+            Validator validador = this.validateUsuario(usuario, password_check);
+            if (existeUsuario(usuario)) {
+                validador.addError("-El usuario con el correo ingresado ya existe");
+            }
+            if (validador.Valid) {
+                /** Llamar al DAO */
+                dataUsuario.add(usuario);
+            } else {
+                /** Throw Exception */
+                throw new Exception(validador.Message);
+            }
+        }
+
         public void nuevoUsuario(string email, string password, string password_check, string nombre, string apellido, string residencia, DateTime fdn, string foto)
         {
             Usuario usuario = new Usuario(apellido, nombre, email, password, residencia, fdn, foto);
