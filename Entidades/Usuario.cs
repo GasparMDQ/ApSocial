@@ -19,8 +19,6 @@ namespace ApSocial.Entidades
         private string foto_usuario;
         private bool enabled;
 
-        private byte[] foto_stream;
-
         public Usuario(string apellido, string nombre, string email, string password, string residencia, DateTime fdn, string foto)
         {
             this.Apellido = apellido;
@@ -30,7 +28,6 @@ namespace ApSocial.Entidades
             this.Residencia = residencia;
             this.FechaDeNacimiento = fdn;
             this.Foto_usuario = foto;
-            this.Foto_stream = null;
             
             this.enabled = true;
         }
@@ -107,13 +104,6 @@ namespace ApSocial.Entidades
         {
             this.enabled = false;
         }
-
-        public byte[] Foto_stream
-        {
-            get { return foto_stream; }
-            set { foto_stream = value; }
-        }
-
 
     }
 }
