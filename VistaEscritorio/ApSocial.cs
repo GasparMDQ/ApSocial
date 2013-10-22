@@ -88,5 +88,11 @@ namespace VistaEscritorio
                 //Do nothing
             }
         }
+
+        private void verMuroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Muro miMuro = new Muro();
+            miMuro.ShowDialog();
+        }
     }
 }

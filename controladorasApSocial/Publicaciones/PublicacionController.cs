@@ -12,7 +12,7 @@ namespace ApSocial.Controladora.Publicaciones
     /*
      ver muro me mustra las publicaciones mias y de mis amigos ordenadas por fecha
      */
-    class PublicacionController
+    public class PublicacionController
     {
         DAOPublicacion daoPublicacion = DAOPublicacion.Instance();
         private AmistadesController controladoraAmistad = new AmistadesController();
@@ -79,7 +79,7 @@ namespace ApSocial.Controladora.Publicaciones
         }
 
 
-        public List<Publicacion> getPublicacionesPublicasDeMisAmigos(int idUsuario)
+        public List<Publicacion> getPublicacionesPublicasDeMisAmigosYmias(int idUsuario)
         {
             try
             {
@@ -87,8 +87,11 @@ namespace ApSocial.Controladora.Publicaciones
                 List<Publicacion> publicaciones = new List<Publicacion>();
                 foreach (Usuario usuario in usuariosAmigos)
                 {
+                    //voy concatenando todas las publicaciones que son publicas de mis amigos
                     publicaciones.Concat(getPublicacionesPublicasByIDUsuario(usuario.Id));
                 }
+                //le sumo mis publicaciones
+                publicaciones.Concat(daoPublicacion.getPublicacionesByidUsuario(idUsuario));
                 return publicaciones;
             }
             catch (Exception ex)
@@ -155,7 +158,7 @@ namespace ApSocial.Controladora.Publicaciones
             List<Publicacion> listaPublicaciones = new List<Publicacion>();
             try
             {
-                listaPublicaciones = this.getPublicacionesPublicasDeMisAmigos(usuarioId);
+                listaPublicaciones = this.getPublicacionesPublicasDeMisAmigosYmias(usuarioId);
                 listaPublicaciones.Concat(getPublicacionesPublicasByIDUsuario(usuarioId));//falta ordenar la lista 
                 //listaPublicaciones.Sort(
                 return listaPublicaciones;

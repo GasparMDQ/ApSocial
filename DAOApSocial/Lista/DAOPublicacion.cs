@@ -51,15 +51,22 @@ namespace ApSocial.DAO.Lista
 
         public List<Publicacion> getPublicacionesByidUsuario(int idUsuario) 
         {
-
-            List<Publicacion> listaById=new List<Publicacion>();
-            foreach(Publicacion publicacion in listaPublicaciones){
-                if(publicacion.Usuario_origen ==idUsuario){
-                    listaById.Add(publicacion);
-                }
-            }return listaById;
-
-        }
+            try
+            {
+                List<Publicacion> listaById = new List<Publicacion>();
+                foreach (Publicacion publicacion in listaPublicaciones)
+                {
+                    if (publicacion.Usuario_origen == idUsuario)
+                    {
+                        listaById.Add(publicacion);
+                    }
+                } return listaById;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+         }
 
         public void add(Publicacion publicacion)
         {

@@ -96,8 +96,14 @@ namespace ApSocial.DAO.Lista
             }
             return listaEnabled;
         }
-
-    }
-
+        public Usuario searchOneByEmail(string email) 
+        {
+            foreach (Usuario usuario in listaUsuarios)
+            {
+                if (usuario.Email == email) { return usuario; }
+            }
+            throw new Exception("no se encontro usuario con ese email");
+        }
+        }
 
 }
