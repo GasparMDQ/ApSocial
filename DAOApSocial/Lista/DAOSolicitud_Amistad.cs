@@ -71,5 +71,43 @@ namespace ApSocial.DAO.Lista
         }
         public List<Solicitud_Amistad> getAll() { return listaSolicitudes; }
 
+        public Solicitud_Amistad getOneByUsers(Usuario usuarioSolicitante, Usuario usuarioSolicitado)
+        {
+            foreach (Solicitud_Amistad solicitud in listaSolicitudes) {
+                if (solicitud.Solicitado == usuarioSolicitado.Id && solicitud.Solicitante == usuarioSolicitante.Id) { return solicitud; }
+            }
+            foreach (Solicitud_Amistad solicitud in listaSolicitudes) {
+                if (solicitud.Solicitado == usuarioSolicitante.Id && solicitud.Solicitante == usuarioSolicitado.Id) { return solicitud; }
+            }
+            throw new Exception("No se encontró solicitud entre los usuarios");
+        }
+
+        public List<Solicitud_Amistad> getAllFriendsFromUser(Usuario usuario)
+        {
+            List<Solicitud_Amistad> listado = new List<Solicitud_Amistad>();
+            foreach (Solicitud_Amistad solicitud in listaSolicitudes) {
+                if (solicitud.Solicitado == usuario.Id && solicitud.Aceptada) {
+                    listado.Add(solicitud);
+                } else if (solicitud.Solicitante == usuario.Id && solicitud.Aceptada) {
+                    listado.Add(solicitud);
+                }
+            }
+            return listado;
+        }
+
+        public List<Solicitud_Amistad> getAllNotFriendsFromUser(Usuario usuario)
+        {
+            List<Solicitud_Amistad> listado = new List<Solicitud_Amistad>();
+            foreach (Solicitud_Amistad solicitud in listaSolicitudes) {
+                if (solicitud.Solicitado == usuario.Id && !solicitud.Aceptada) {
+                    listado.Add(solicitud);
+                } else if (solicitud.Solicitante == usuario.Id && !solicitud.Aceptada) {
+                    listado.Add(solicitud);
+                }
+            }
+            return listado;
+        }
+
+
     }
 }
