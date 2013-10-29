@@ -116,6 +116,18 @@ namespace ApSocial.DAO.Lista
             } return rta;
         }
 
+        public bool existePublicacion(string nombre)
+        {
+            bool rta = false;
+            foreach (Publicacion publicacion in listaPublicaciones)
+            {
+                if (publicacion.Mensaje == nombre)
+                {
+                    rta = true;
+                }
+            } return rta;
+        }
+
 
    
     }

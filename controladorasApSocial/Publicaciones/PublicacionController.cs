@@ -168,6 +168,9 @@ namespace ApSocial.Controladora.Publicaciones
                 throw  ex; 
             }
         }
+        public bool existePublicacion(string name) {
+            return (daoPublicacion.existePublicacion(name));
+        }
 
     }
 }
