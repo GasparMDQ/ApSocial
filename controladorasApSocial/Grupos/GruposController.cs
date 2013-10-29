@@ -5,8 +5,8 @@ using System.Text;
 using ApSocial.Entidades;
 using ApSocial.Controladora.Usuarios;
 
-//using ApSocial.DAO.BaseDeDatos;
-using ApSocial.DAO.Lista;
+using ApSocial.DAO.BaseDeDatos;
+//using ApSocial.DAO.Lista;
 
 namespace ApSocial.Controladora.Grupos
 {
