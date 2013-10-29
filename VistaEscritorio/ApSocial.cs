@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ApSocial.Controladora.Usuarios;
+using ApSocial.Controladora.Publicaciones;
+using ApSocial.Entidades;
 
 namespace VistaEscritorio
 {
     public partial class ApSocial : Form
     {
         private UsuarioController controladora = new UsuarioController();
+        private PublicacionController controladoraPublicaciones = new PublicacionController();
 
         public ApSocial()
         {
@@ -94,5 +97,13 @@ namespace VistaEscritorio
             Muro miMuro = new Muro();
             miMuro.ShowDialog();
         }
+
+        private void nuevoAlbumToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            albumForm unAlbum = new albumForm();
+            unAlbum.ShowDialog();
+        }
+
+
     }
 }

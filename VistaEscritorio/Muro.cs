@@ -15,12 +15,16 @@ namespace VistaEscritorio
     public partial class Muro : Form
     {
         UsuarioController controladoraUsuarios = new UsuarioController();
-        PublicacionController controladoraPubliciones = new PublicacionController();
+        PublicacionController controladoraPublicaciones = new PublicacionController();
+
         public Muro()
         {
             InitializeComponent();
-            inicializarListaPublicaciones(controladoraPubliciones.getPublicacionesPublicasDeMisAmigosYmias(Session.IdUsuarioLogueado));
+            inicializarListaPublicaciones(controladoraPublicaciones.getPublicacionesPublicasDeMisAmigosYmias(Session.IdUsuarioLogueado));
+
         }
+
+
 
         public void inicializarListaPublicaciones(List<Publicacion> miLista) 
         {
@@ -33,7 +37,7 @@ namespace VistaEscritorio
 
                 }
             }
-            catch (Exception ex) {
+            catch {
                 MessageBox.Show("error");
             } 
         }
