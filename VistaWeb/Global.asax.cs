@@ -4,11 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using ApSocial.Controladora.Usuarios;
+using ApSocial.Entidades;
 
 namespace VistaWeb
 {
     public class Global : System.Web.HttpApplication
     {
+
+        private UsuarioController controladora = new UsuarioController();
+
 
         void Application_Start(object sender, EventArgs e)
         {
@@ -31,7 +36,12 @@ namespace VistaWeb
         void Session_Start(object sender, EventArgs e)
         {
             // Código que se ejecuta cuando se inicia una nueva sesión
-            Session["usuarioLogueado"] = null;
+            if (User.Identity.IsAuthenticated){
+                Session["usuarioLogueado"] = controladora.getUsuarioByEmail(User.Identity.Name).Id;
+            } else {
+                Session["usuarioLogueado"] = null;
+            }
+
 
         }
 
