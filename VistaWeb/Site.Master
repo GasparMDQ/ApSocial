@@ -1,55 +1,60 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="VistaWeb.SiteMaster" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
+<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/AppSocial.css" rel="stylesheet" type="text/css" />
     <link href="~/Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script language="javascript" src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
-    <script language="javascript" src="~/Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script language="javascript" src="/Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script language="javascript" src="/Scripts/bootstrap.min.js" type="text/javascript"></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form runat="server">
-    <div class="page">
-        <div class="header">
-            <div class="title">
-                <h1>
-                    Mi aplicación Social
-                </h1>
-            </div>
-            <div class="loginDisplay">
-                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+    <div class="container">
+
+<div class="navbar navbar-fixed-top navbar-inverse">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Mi aplicación Social</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/Default.aspx">Mi muro</a></li>
+            <li><a href="/Amistad.aspx">Amistades</a></li>
+            <li><a href="/About.aspx">Acerca de</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <p class="navbar-text">
+                <asp:LoginView ID="LoginView1" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
                         [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Iniciar sesión</a> ]
                     </AnonymousTemplate>
                     <LoggedInTemplate>
-                        Pantalla de bienvenida <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                        <span class="label label-primary"><asp:LoginName ID="HeadLoginName" runat="server" /></span>
                         [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/"/> ]
                     </LoggedInTemplate>
                 </asp:LoginView>
-            </div>
-            <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
-                    <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Mi muro"/>
-                        <asp:MenuItem NavigateUrl="~/Amistad.aspx" Text="Amistades"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Acerca de"/>
-                    </Items>
-                </asp:Menu>
-            </div>
-        </div>
-        <div class="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
-        </div>
-        <div class="clear">
-        </div>
+            </p>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+      <div class="main">
+          <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+      </div>
+      <div class="clear">
+      </div>
     </div>
     <div class="footer">
-        
     </div>
     </form>
 </body>

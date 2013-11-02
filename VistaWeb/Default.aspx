@@ -5,10 +5,10 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-sm-8">
             Publicaciones
         </div>
-        <div class="col-md-3 col-md-offset-1">
+        <div class="col-sm-3 col-sm-offset-1">
             <div class="row">Lista de Amigos</div>
             <div class="row">
                 <asp:ListBox ID="AmigosList" runat="server"></asp:ListBox>

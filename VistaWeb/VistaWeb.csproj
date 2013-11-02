@@ -58,6 +58,7 @@
     <Content Include="Amistad.aspx" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Styles\AppSocial.css" />
     <Content Include="Styles\bootstrap.min.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
