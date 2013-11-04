@@ -33,7 +33,8 @@
             this.btnGuardarAlbum = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnNuevaFoto = new System.Windows.Forms.Button();
-            this.btnCrearAlbum = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // albumNameTXT
@@ -54,16 +55,17 @@
             // 
             // btnGuardarAlbum
             // 
-            this.btnGuardarAlbum.Location = new System.Drawing.Point(14, 92);
+            this.btnGuardarAlbum.Location = new System.Drawing.Point(14, 409);
             this.btnGuardarAlbum.Name = "btnGuardarAlbum";
             this.btnGuardarAlbum.Size = new System.Drawing.Size(72, 22);
             this.btnGuardarAlbum.TabIndex = 2;
             this.btnGuardarAlbum.Text = "Guardar";
             this.btnGuardarAlbum.UseVisualStyleBackColor = true;
+            this.btnGuardarAlbum.Click += new System.EventHandler(this.btnGuardarAlbum_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(105, 92);
+            this.btnCancelar.Location = new System.Drawing.Point(137, 409);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 22);
             this.btnCancelar.TabIndex = 3;
@@ -73,29 +75,38 @@
             // 
             // btnNuevaFoto
             // 
-            this.btnNuevaFoto.Location = new System.Drawing.Point(12, 64);
+            this.btnNuevaFoto.Location = new System.Drawing.Point(231, 71);
             this.btnNuevaFoto.Name = "btnNuevaFoto";
             this.btnNuevaFoto.Size = new System.Drawing.Size(125, 22);
             this.btnNuevaFoto.TabIndex = 4;
             this.btnNuevaFoto.Text = "Cargar nueva foto";
             this.btnNuevaFoto.UseVisualStyleBackColor = true;
-
+            this.btnNuevaFoto.Click += new System.EventHandler(this.btnNuevaFoto_Click);
             // 
-            // btnCrearAlbum
+            // listBox1
             // 
-            this.btnCrearAlbum.Location = new System.Drawing.Point(155, 63);
-            this.btnCrearAlbum.Name = "btnCrearAlbum";
-            this.btnCrearAlbum.Size = new System.Drawing.Size(75, 23);
-            this.btnCrearAlbum.TabIndex = 5;
-            this.btnCrearAlbum.Text = "Crear album";
-            this.btnCrearAlbum.UseVisualStyleBackColor = true;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(13, 70);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(212, 303);
+            this.listBox1.TabIndex = 5;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(232, 114);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(124, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Borrar Foto";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // albumForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 151);
-            this.Controls.Add(this.btnCrearAlbum);
+            this.ClientSize = new System.Drawing.Size(471, 466);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnNuevaFoto);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardarAlbum);
@@ -115,6 +126,7 @@
         private System.Windows.Forms.Button btnGuardarAlbum;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnNuevaFoto;
-        private System.Windows.Forms.Button btnCrearAlbum;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

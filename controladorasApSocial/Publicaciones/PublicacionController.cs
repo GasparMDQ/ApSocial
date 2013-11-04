@@ -171,6 +171,17 @@ namespace ApSocial.Controladora.Publicaciones
         public bool existePublicacion(string name) {
             return (daoPublicacion.existePublicacion(name));
         }
+        public void nuevaFoto(string nombre,string url,List<Usuario> usuariosEtiquetados){
+            Fotos foto;
+            try
+            {
+                foto = new Fotos(nombre, url, usuariosEtiquetados);
+            }
+            catch (Exception ex){
+                throw ex;
+            }
+        }
+
 
     }
 }

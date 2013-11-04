@@ -25,14 +25,36 @@ namespace VistaEscritorio
             // ver que si cancelo tengo q borrar todas las fotos que habia cargado  
         }
 
-      /*  private void btnNuevaFoto_Click(object sender, EventArgs e)
+
+
+        private void btnNuevaFoto_Click(object sender, EventArgs e)
         {
-            Album_fotos unAlbum;
-            if (albumNameTXT.Text != "") {
-                if (controladoraPublicacion.existePublicacion(albumNameTXT.Text)) { 
-                    unAlbum=
+            nuevaFoto newPic = new nuevaFoto();
+            newPic.ShowDialog();
+
+        }
+
+        private void btnGuardarAlbum_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool existe;
+                existe = controladoraPublicacion.existePublicacion(albumNameTXT.Text);
+                if (!existe)
+                {
+                    Album_fotos nuevoAlbum = new Album_fotos(DateTime.Today, albumNameTXT.Text, true, Session.IdUsuarioLogueado, null);
+                }
+                else {
+                    MessageBox.Show("el album ya existe");
                 }
             }
-        }*/
+            catch (Exception ex)
+            {
+                MessageBox.Show("no se guardar el album" + ex.Message);
+            }
+
+        }
+
+
     }
 }
