@@ -4,19 +4,23 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <div class="row">
-        <div class="row">
+    <div class="row well">
             <h3>Solicitudes pendientes <span class="badge">
                 <asp:Label ID="solicitudesPendientesLbl" runat="server" Text="0"></asp:Label></span></h3>
-        </div>
         <div class="row">
-            (lista de solicitudes)                
+            <div class="col-md-2">
+                <select id="ListaSolicitudes" name="D1">
+                    <asp:Literal ID="OpcionesSolicitud" runat="server"></asp:Literal>
+                    <option value="1">Texto</option>
+                </select></div>
+            <div class="col-md-9 col-md-offset-1">
+            </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row well">
         <p>
             <button class="btn btn-info" data-toggle="modal" data-target="#newFriend">Agregar amigo</button>
-        <p/>
+        </p>
         <span class="alert-danger">
             <asp:Literal ID="resultadoSolicitud" runat="server"></asp:Literal>
         </span>
@@ -27,7 +31,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Nueva Solicitud</h4>
+            <h4 class="modal-title" id="myModalLabel">Nueva Solicitud de Amistad</h4>
           </div>
           <div class="modal-body">
             <div class="row">

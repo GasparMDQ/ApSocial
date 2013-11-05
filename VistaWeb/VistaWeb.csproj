@@ -56,10 +56,15 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Amistad.aspx" />
+    <Content Include="Scripts\AppSocial.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Styles\AppSocial.css" />
     <Content Include="Styles\bootstrap.min.css" />
+    <Content Include="Styles\chosen-sprite%402x.png" />
+    <Content Include="Styles\chosen-sprite.png" />
+    <Content Include="Styles\chosen.min.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -159,6 +164,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
