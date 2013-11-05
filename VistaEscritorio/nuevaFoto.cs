@@ -13,6 +13,14 @@ namespace VistaEscritorio
 {
     public partial class nuevaFoto : Form
     {
+        private int idFoto;
+
+        public int IdFoto
+        {
+            get { return idFoto; }
+            set { idFoto = value; }
+        }
+
         public nuevaFoto()
         {
             InitializeComponent();
@@ -47,7 +55,8 @@ namespace VistaEscritorio
                 verificacion = verificarDatos();
                 if (verificarDatos() == "")
                 {
-                    controladoraPublicaciones.nuevaFoto(nombreTXT.Text, pathTXT.Text, cargarUsuarios());
+                    Fotos foto = controladoraPublicaciones.nuevaFoto(nombreTXT.Text, pathTXT.Text, cargarUsuarios());
+                    this.IdFoto = foto.Id;
                     this.Close();
                 }
                 else {

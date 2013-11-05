@@ -14,6 +14,7 @@ namespace VistaEscritorio
     public partial class albumForm : Form
     {
         PublicacionController controladoraPublicacion = new PublicacionController();
+        List<Fotos> fotosDelAlbum = new List<Fotos>();
         
         public albumForm()
         {
@@ -29,8 +30,16 @@ namespace VistaEscritorio
 
         private void btnNuevaFoto_Click(object sender, EventArgs e)
         {
-            nuevaFoto newPic = new nuevaFoto();
-            newPic.ShowDialog();
+            try
+            {
+                nuevaFoto newPic = new nuevaFoto();
+                newPic.ShowDialog();
+                int fotoId = newPic.IdFoto;
+                listFotos.Items.Add(controladoraPublicacion.buscarFoto(fotoId).Nombre);
+            }
+            catch (Exception ex){
+                MessageBox.Show("error al cargar la foto  " + ex.Message);
+            }
 
         }
 
