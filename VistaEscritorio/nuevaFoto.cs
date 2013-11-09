@@ -8,12 +8,16 @@ using System.Text;
 using System.Windows.Forms;
 using ApSocial.Entidades;
 using ApSocial.Controladora.Publicaciones;
+using ApSocial.Controladora.Amistades;
 
 namespace VistaEscritorio
 {
     public partial class nuevaFoto : Form
     {
         private int idFoto;
+        PublicacionController controladoraPublicaciones = new PublicacionController();
+        AmistadesController controladoraAmistad = new AmistadesController();
+
 
         public int IdFoto
         {
@@ -24,17 +28,17 @@ namespace VistaEscritorio
         public nuevaFoto()
         {
             InitializeComponent();
+            cargarAmigos(listAmigos);
         }
-        PublicacionController controladoraPublicaciones=new PublicacionController();
+
         private void buscarArchivoBtn_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
         }
 
-        public List<Usuario> cargarUsuarios() {
-            List<Usuario> lista=new List<Usuario>();
-            //falta cargar usuarios del list box 
-            return lista;
+        public void cargarAmigos(ListBox listBox) {
+            List<Usuario> lista = controladoraAmistad.getAllFriendsFromUser(Session.IdUsuarioLogueado);
+            listBox.DataSource = lista;
         }
 
         public string verificarDatos() {
@@ -48,6 +52,8 @@ namespace VistaEscritorio
             return rta;
         }
 
+
+
         private void aceptarBTN_Click(object sender, EventArgs e)
         {
             string verificacion;
@@ -55,9 +61,9 @@ namespace VistaEscritorio
                 verificacion = verificarDatos();
                 if (verificarDatos() == "")
                 {
-                    Fotos foto = controladoraPublicaciones.nuevaFoto(nombreTXT.Text, pathTXT.Text, cargarUsuarios());
+                   /* Fotos foto = controladoraPublicaciones.nuevaFoto(nombreTXT.Text, pathTXT.Text, cargarUsuariosEtiquetados());
                     this.IdFoto = foto.Id;
-                    this.Close();
+                    this.Close();*/
                 }
                 else {
                     MessageBox.Show(verificarDatos());
@@ -71,5 +77,7 @@ namespace VistaEscritorio
         {
             pathTXT.Text = openFileDialog1.FileName;
         }
+
+
     }
 }

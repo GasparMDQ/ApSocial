@@ -39,6 +39,8 @@
             this.nombreTXT = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.listAmigos = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // aceptarBTN
@@ -85,14 +87,14 @@
             // listUsuariosEtiquetados
             // 
             this.listUsuariosEtiquetados.FormattingEnabled = true;
-            this.listUsuariosEtiquetados.Location = new System.Drawing.Point(327, 58);
+            this.listUsuariosEtiquetados.Location = new System.Drawing.Point(458, 48);
             this.listUsuariosEtiquetados.Name = "listUsuariosEtiquetados";
             this.listUsuariosEtiquetados.Size = new System.Drawing.Size(110, 108);
             this.listUsuariosEtiquetados.TabIndex = 11;
             // 
             // etiquetarBTN
             // 
-            this.etiquetarBTN.Location = new System.Drawing.Point(327, 172);
+            this.etiquetarBTN.Location = new System.Drawing.Point(327, 162);
             this.etiquetarBTN.Name = "etiquetarBTN";
             this.etiquetarBTN.Size = new System.Drawing.Size(110, 23);
             this.etiquetarBTN.TabIndex = 12;
@@ -102,7 +104,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(324, 42);
+            this.label1.Location = new System.Drawing.Point(455, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 13);
             this.label1.TabIndex = 13;
@@ -133,11 +135,30 @@
             this.label3.TabIndex = 16;
             this.label3.Text = "Foto";
             // 
+            // listAmigos
+            // 
+            this.listAmigos.FormattingEnabled = true;
+            this.listAmigos.Location = new System.Drawing.Point(327, 48);
+            this.listAmigos.Name = "listAmigos";
+            this.listAmigos.Size = new System.Drawing.Size(110, 108);
+            this.listAmigos.TabIndex = 17;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(324, 32);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Mis amigos";
+            // 
             // nuevaFoto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 247);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.listAmigos);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.nombreTXT);
@@ -168,5 +189,7 @@
         private System.Windows.Forms.TextBox nombreTXT;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox listAmigos;
+        private System.Windows.Forms.Label label4;
     }
 }
