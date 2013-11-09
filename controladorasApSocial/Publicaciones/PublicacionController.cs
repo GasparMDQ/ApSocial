@@ -88,10 +88,10 @@ namespace ApSocial.Controladora.Publicaciones
                 foreach (Usuario usuario in usuariosAmigos)
                 {
                     //voy concatenando todas las publicaciones que son publicas de mis amigos
-                    publicaciones.Concat(getPublicacionesPublicasByIDUsuario(usuario.Id));
+                    publicaciones.AddRange(getPublicacionesPublicasByIDUsuario(usuario.Id));
                 }
                 //le sumo mis publicaciones
-                publicaciones.Concat(daoPublicacion.getPublicacionesByidUsuario(idUsuario));
+                publicaciones.AddRange(daoPublicacion.getPublicacionesByidUsuario(idUsuario));
                 return publicaciones;
             }
             catch (Exception ex)
@@ -159,7 +159,7 @@ namespace ApSocial.Controladora.Publicaciones
             try
             {
                 listaPublicaciones = this.getPublicacionesPublicasDeMisAmigosYmias(usuarioId);
-                listaPublicaciones.Concat(getPublicacionesPublicasByIDUsuario(usuarioId));//falta ordenar la lista 
+                listaPublicaciones.AddRange(getPublicacionesPublicasByIDUsuario(usuarioId));//falta ordenar la lista 
                 //listaPublicaciones.Sort(
                 return listaPublicaciones;
 
