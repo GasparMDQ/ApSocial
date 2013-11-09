@@ -13,7 +13,7 @@
     <span class="failureNotification">
         <asp:Literal ID="ErrorMessage" runat="server"></asp:Literal>
     </span>
-    <asp:ValidationSummary ID="RegisterUserValidationSummary" runat="server" CssClass="failureNotification" 
+    <asp:ValidationSummary ID="RegisterUserValidationSummary" runat="server" CssClass="failureNotification alert-danger" 
             ValidationGroup="RegisterUserValidationGroup"/>
     <div class="accountInfo">
         <fieldset class="register">
@@ -60,7 +60,7 @@
             <p>
                 <asp:Label ID="FechaDeNacimientoLabel" runat="server" AssociatedControlID="Dia">Fecha de Nacimiento</asp:Label>
                 <asp:TextBox ID="Dia" runat="server" Width="32px"></asp:TextBox>
-                <asp:DropDownList ID="Mes" runat="server">
+                <asp:DropDownList ID="Mes" runat="server" Width="100px" CssClass="fixed-width">
                     <asp:ListItem Value="01">Enero</asp:ListItem>
                     <asp:ListItem Value="02">Febrero</asp:ListItem>
                     <asp:ListItem Value="03">Marzo</asp:ListItem>

@@ -31,6 +31,7 @@ namespace VistaWeb.Account
                 controladora.nuevoUsuario(this.Email.Text, this.Password.Text, this.ConfirmPassword.Text, this.Nombre.Text, this.Apellido.Text, this.Residencia.Text, fechaDeNacimiento, fotoUrl);
 
                 /** @todo autenticar y redireccionar al muro*/
+                FormsAuthentication.RedirectToLoginPage();
             } catch (Exception ex) {
                 var val = new CustomValidator() {
                     ErrorMessage = ex.Message,

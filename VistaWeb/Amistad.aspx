@@ -11,9 +11,8 @@
             <div class="col-md-2">
                 <select id="ListaSolicitudes" name="D1">
                     <asp:Literal ID="OpcionesSolicitud" runat="server"></asp:Literal>
-                    <option value="1">Texto</option>
                 </select></div>
-            <div class="col-md-9 col-md-offset-1">
+            <div class="col-md-9 col-md-offset-1" id="detalleUsuario">
             </div>
         </div>
     </div>

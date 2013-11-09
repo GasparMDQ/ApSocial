@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ApSocial.Entidades;
-//using ApSocial.DAO.BaseDeDatos;
-using ApSocial.DAO.Lista;
+
+using ApSocial.DAO.BaseDeDatos;
+//using ApSocial.DAO.Lista;
 
 namespace ApSocial.Controladora.Usuarios
 {

@@ -55,6 +55,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="AjaxPages\userDetail.aspx" />
     <Content Include="Amistad.aspx" />
     <Content Include="Scripts\AppSocial.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -114,6 +115,13 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxPages\userDetail.aspx.cs">
+      <DependentUpon>userDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxPages\userDetail.aspx.designer.cs">
+      <DependentUpon>userDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Amistad.aspx.cs">
       <DependentUpon>Amistad.aspx</DependentUpon>
