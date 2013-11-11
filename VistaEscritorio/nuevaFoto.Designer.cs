@@ -89,6 +89,7 @@
             this.listUsuariosEtiquetados.FormattingEnabled = true;
             this.listUsuariosEtiquetados.Location = new System.Drawing.Point(458, 48);
             this.listUsuariosEtiquetados.Name = "listUsuariosEtiquetados";
+            this.listUsuariosEtiquetados.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listUsuariosEtiquetados.Size = new System.Drawing.Size(110, 108);
             this.listUsuariosEtiquetados.TabIndex = 11;
             // 
@@ -100,6 +101,7 @@
             this.etiquetarBTN.TabIndex = 12;
             this.etiquetarBTN.Text = "Etiquetar Usuario";
             this.etiquetarBTN.UseVisualStyleBackColor = true;
+            this.etiquetarBTN.Click += new System.EventHandler(this.etiquetarBTN_Click);
             // 
             // label1
             // 
@@ -140,6 +142,7 @@
             this.listAmigos.FormattingEnabled = true;
             this.listAmigos.Location = new System.Drawing.Point(327, 48);
             this.listAmigos.Name = "listAmigos";
+            this.listAmigos.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listAmigos.Size = new System.Drawing.Size(110, 108);
             this.listAmigos.TabIndex = 17;
             // 
