@@ -20,7 +20,7 @@ namespace VistaEscritorio
         public Muro()
         {
             InitializeComponent();
-            inicializarListaPublicaciones(controladoraPublicaciones.getPublicacionesPublicasDeMisAmigosYmias(Session.IdUsuarioLogueado));
+           // inicializarListaPublicaciones(controladoraPublicaciones.getPublicacionesPublicasDeMisAmigosYmias(Session.IdUsuarioLogueado));
 
         }
 

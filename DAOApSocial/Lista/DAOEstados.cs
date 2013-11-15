@@ -71,6 +71,14 @@ namespace ApSocial.DAO.Lista
         }
         public List<Estados> getAll() { return listaDeEstados; }
 
+        public bool isPublic(Estados estado)
+        {
+            bool rta = true;
+            if (estado.Grupo_destino == -1)
+            {
+                rta = false;
+            } return rta;
+        }
 
     }
 

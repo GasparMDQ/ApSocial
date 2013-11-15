@@ -20,20 +20,13 @@ namespace ApSocial.Controladora.Publicaciones
         private DAOUsuario_Grupo daoUsuarioGrupo = DAOUsuario_Grupo.Instance();
 
 
-        public bool isPublic(Publicacion publicacion)
-        {
-            bool rta = true;
-            if (publicacion.Grupo_destino == -1)
-            {
-                rta = false;
-            } return rta;
-        }
 
 
 
 
 
-        public List<Publicacion> getPublicacionesPublicasByIDUsuario(int idUsuario)
+
+        /*public List<Publicacion> getPublicacionesPublicasByIDUsuario(int idUsuario)
         {
             //me da las publicaciones publicas de un usuario la uso luego recorriendo la lista de mis amigos 
             try
@@ -136,7 +129,7 @@ namespace ApSocial.Controladora.Publicaciones
             catch (Exception ex) { 
                 throw  ex; 
             }
-        }
+        }*/
 
 
 
