@@ -6,18 +6,38 @@ namespace ApSocial.Entidades
     public class Estados : Publicacion
     {
 
-        public Fotos foto_estado;
+        private string foto_estado;
 
-        public Estados()
+        public string Foto_estado
         {
-
+            get { return foto_estado; }
+            set { foto_estado = value; }
         }
-        public Estados(Fotos foto_estado, DateTime fecha_creado, string mensaje, bool publico, int usuario_origen)
+        private int grupo_id;
+
+        public int Grupo_id
+        {
+            get { return grupo_id; }
+            set { grupo_id = value; }
+        }
+
+        //Si se pasa grupo, se setea la privacidad en true, sino es false
+        public Estados(DateTime fecha_creado, string mensaje, int usuario_origen, int grupo, string foto_estado)
         {
             this.Fecha_creado = fecha_creado;
-            this.foto_estado = foto_estado;
+            this.Foto_estado = foto_estado;
             this.Mensaje = mensaje;
-            this.Publico = publico;
+            this.Publico = true;
+            this.Grupo_id = grupo;
+            this.Usuario_origen = usuario_origen;
+        }
+
+        public Estados(DateTime fecha_creado, string mensaje, int usuario_origen, string foto_estado)
+        {
+            this.Fecha_creado = fecha_creado;
+            this.Foto_estado = foto_estado;
+            this.Mensaje = mensaje;
+            this.Publico = false;
             this.Usuario_origen = usuario_origen;
         }
 

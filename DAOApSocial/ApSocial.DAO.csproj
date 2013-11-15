@@ -43,10 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDeDatos\DAOEstados.cs" />
     <Compile Include="BaseDeDatos\DAOGrupos.cs" />
     <Compile Include="BaseDeDatos\DAOSolicitud_Amistad.cs" />
     <Compile Include="BaseDeDatos\DBCommonAccess.cs" />
     <Compile Include="BaseDeDatos\DAOUsuario.cs" />
+    <Compile Include="BaseDeDatos\DAOAlbum_fotos.cs" />
     <Compile Include="IDAO.cs" />
     <Compile Include="Lista\DAOAlbum_fotos.cs" />
     <Compile Include="Lista\DAOComentarios.cs" />
@@ -75,6 +77,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="BaseDeDatos\Scripts DB\CreateTB.Estados.txt" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

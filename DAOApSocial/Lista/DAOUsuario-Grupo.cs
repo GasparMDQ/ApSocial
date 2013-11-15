@@ -85,9 +85,5 @@ namespace ApSocial.DAO.Lista
             }
             throw new Exception("El usuario no pertenece al grupo ");
         }
-
-
-
-        
     }
 }

@@ -6,21 +6,20 @@ namespace ApSocial.Entidades
     public class Fotos
     {
 
-        private string nombre;
-        private string url;
-        public List<Usuario> usuarios_etiquetados;
         int id;
+        private string url;
 
+        //public List<Usuario> usuarios_etiquetados;
+        // Crear DAO Etiquetas que maneje entidades Usuario_Foto (crearla) y una controladora acorde que se encarge de
+        // generar etiquetas (pares usuario_foto) y de obtener la lista de usuarios para X foto
         public int Id
         {
             get { return id; }
             set { id = value; }
         }
-        public Fotos(string nombre, string url, List<Usuario> usuarios_etiquetados)
+        public Fotos(string url)
         {
-            this.nombre = nombre;
             this.url = url;
-            this.usuarios_etiquetados = usuarios_etiquetados;
         }
 
         ~Fotos()
@@ -31,18 +30,6 @@ namespace ApSocial.Entidades
         public virtual void Dispose()
         {
 
-        }
-
-        public string Nombre
-        {
-            get
-            {
-                return nombre;
-            }
-            set
-            {
-                nombre = value;
-            }
         }
 
         public string Url
