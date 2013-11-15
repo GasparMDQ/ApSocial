@@ -45,7 +45,7 @@ namespace ApSocial.Entidades
         }
         public override string ToString()
         {
-            return this.Nombre;
+            return this.Url;
         }
 
 

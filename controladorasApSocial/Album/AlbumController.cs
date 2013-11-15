@@ -15,7 +15,7 @@ namespace ApSocial.Controladora.Album
             Album_fotos album;
             try
             {
-                album = new Album_fotos(DateTime.Today, mensaje, publico, usuario_origen, lista_fotos);
+                album = new Album_fotos(DateTime.Today, mensaje, usuario_origen);
                 daoAlbum.add(album);
             }
             catch (Exception ex)
