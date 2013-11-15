@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Album\AlbumController.cs" />
     <Compile Include="Amistades\AmistadesController.cs" />
+    <Compile Include="Estado\EstadoController.cs" />
+    <Compile Include="Foto\FotoController.cs" />
     <Compile Include="Grupos\GruposController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publicaciones\PublicacionController.cs" />
@@ -57,6 +60,7 @@
       <Name>ApSocial.Entidades</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

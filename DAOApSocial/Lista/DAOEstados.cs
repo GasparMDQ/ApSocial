@@ -6,7 +6,7 @@ using ApSocial.Entidades;
 
 namespace ApSocial.DAO.Lista
 {
-    public class DAOEstados
+    public class DAOEstados:IDAO<Estados>
     {
         List<Estados> listaDeEstados = new List<Estados>();
         int contadorEstados = 0;
@@ -70,6 +70,8 @@ namespace ApSocial.DAO.Lista
             }
         }
         public List<Estados> getAll() { return listaDeEstados; }
+
+
     }
 
 }

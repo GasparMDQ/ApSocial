@@ -9,14 +9,16 @@ using System.Windows.Forms;
 using ApSocial.Entidades;
 using ApSocial.Controladora.Publicaciones;
 using ApSocial.Controladora.Amistades;
+using ApSocial.Controladora.Foto;
 
 namespace VistaEscritorio
 {
     public partial class nuevaFoto : Form
     {
-        private int idFoto;
+        private int idFoto=-1;
         PublicacionController controladoraPublicaciones = new PublicacionController();
         AmistadesController controladoraAmistad = new AmistadesController();
+        FotoController controladoraFoto = new FotoController();
 
 
         public int IdFoto
@@ -69,9 +71,9 @@ namespace VistaEscritorio
                 if (verificarDatos() == "")
                 {
                     recuperarEtiquetados(listAmigos);
-                    Fotos foto = controladoraPublicaciones.nuevaFoto(nombreTXT.Text, pathTXT.Text, recuperarEtiquetados(listAmigos));
-                    /*this.IdFoto = foto.Id;
-                    this.Close();*/
+                    Fotos foto = controladoraFoto.nuevaFoto(nombreTXT.Text, pathTXT.Text, recuperarEtiquetados(listAmigos));
+                    this.IdFoto = foto.Id;
+                    this.Close();
                 }
                 else {
                     MessageBox.Show(verificarDatos());
@@ -92,14 +94,18 @@ namespace VistaEscritorio
             usuarios = listAmigos.SelectedItems;
             if (listAmigos.SelectedIndex != -1)
             {
-                foreach (Usuario s in usuarios)
+                foreach (Usuario usu in usuarios)
                 {
-                    listUsuariosEtiquetados.Items.Add(s);
+                    if(!listUsuariosEtiquetados.Items.Contains(usu)){
+                        listUsuariosEtiquetados.Items.Add(usu);
+                    }
                 }
             }
             else
                 MessageBox.Show("Debe seleccionar un usuario");
         }
+
+
         
         public List<Usuario> recuperarEtiquetados(ListBox listAmigos) {
             List<Usuario> miLista = new List<Usuario>();
@@ -110,10 +116,14 @@ namespace VistaEscritorio
                 foreach (Usuario s in usuarios)
                 {
                     miLista.Add(s);
-                    MessageBox.Show("se agrego a  " + s.Nombre +s.Apellido);
                 }
             } return miLista;
         
+        }
+
+        private void cancelarBTN_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
 
