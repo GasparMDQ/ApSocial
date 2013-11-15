@@ -18,9 +18,7 @@ namespace ApSocial.Controladora.Publicaciones
         private AmistadesController controladoraAmistad = new AmistadesController();
         private UsuarioController controladoraUsuario = new UsuarioController();
         private DAOUsuario_Grupo daoUsuarioGrupo = DAOUsuario_Grupo.Instance();
-        private DAOFotos daoFotos = DAOFotos.Instance();
-        private DAOEstados daoEstados = DAOEstados.Instance();
-        private DAOAlbum_fotos daoAlbum = DAOAlbum_fotos.Instance();
+
 
         public bool isPublic(Publicacion publicacion)
         {
@@ -123,35 +121,6 @@ namespace ApSocial.Controladora.Publicaciones
             }
         }
 
-        public void nuevoEstado(int idUsuario, string mensaje, string nombreFoto, string url, List<Usuario> usuarios_etiquetados, bool publico)
-        {
-            Fotos foto;
-            Estados estado;
-            try
-            {
-                foto = new Fotos(nombreFoto, url, usuarios_etiquetados);
-                daoFotos.add(foto);
-                estado = new Estados(foto, DateTime.Today, mensaje, publico, idUsuario);
-                daoEstados.add(estado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
-         public void nuevoAlbum(string mensaje, bool publico, int usuario_origen, List<Fotos> lista_fotos){
-              Album_fotos album;
-              try
-              {
-                  album = new Album_fotos(DateTime.Today, mensaje, publico, usuario_origen, lista_fotos);
-                  daoAlbum.add(album);
-              }
-              catch (Exception ex) {
-                  throw ex;
-              }
-          }
 
         public List<Publicacion> verMuro(int usuarioId)
         {
@@ -168,25 +137,8 @@ namespace ApSocial.Controladora.Publicaciones
                 throw  ex; 
             }
         }
-        public bool existePublicacion(string name) {
-            return (daoPublicacion.existePublicacion(name));
-        }
-        public Fotos nuevaFoto(string nombre,string url,List<Usuario> usuariosEtiquetados){
-            Fotos foto;
-            try
-            {
-                foto = new Fotos(nombre, url, usuariosEtiquetados);
-                daoFotos.add(foto);
-            }
-            catch (Exception ex){
-                throw ex;
-            }
-            return foto;
-        }
-        public Fotos buscarFoto(int id) {
-            Fotos foto= daoFotos.searchById(id);
-            return foto;
-        }
+
+
 
 
     }

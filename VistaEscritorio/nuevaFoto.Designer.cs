@@ -83,6 +83,7 @@
             this.cancelarBTN.TabIndex = 10;
             this.cancelarBTN.Text = "Cancelar";
             this.cancelarBTN.UseVisualStyleBackColor = true;
+            this.cancelarBTN.Click += new System.EventHandler(this.cancelarBTN_Click);
             // 
             // listUsuariosEtiquetados
             // 

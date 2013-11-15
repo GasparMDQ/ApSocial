@@ -56,6 +56,10 @@ namespace ApSocial.Entidades
                 url = value;
             }
         }
+        public override string ToString()
+        {
+            return this.Nombre;
+        }
 
 
     }
