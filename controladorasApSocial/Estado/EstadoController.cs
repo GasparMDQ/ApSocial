@@ -17,7 +17,7 @@ namespace ApSocial.Controladora.Estado
             Estados estado;
             try
             {
-                foto = new Fotos(url);
+                foto = new Fotos(url,1);//Fix THIS
                 daoFotos.add(foto);
                 estado = new Estados(DateTime.Today, mensaje, idUsuario, foto.ToString());
                 daoEstados.add(estado);

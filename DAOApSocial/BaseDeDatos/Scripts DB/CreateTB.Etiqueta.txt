@@ -1,0 +1,37 @@
+﻿USE [AplicacionSocial]
+GO
+
+/****** Object:  Table [dbo].[etiqueta]    Script Date: 11/14/2013 21:33:02 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[etiqueta](
+	[fotoId] [int] NOT NULL,
+	[usuarioId] [int] NOT NULL,
+ CONSTRAINT [PK_etiqueta_1] PRIMARY KEY CLUSTERED 
+(
+	[fotoId] ASC,
+	[usuarioId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[etiqueta]  WITH CHECK ADD  CONSTRAINT [FK_etiqueta_fotos1] FOREIGN KEY([fotoId])
+REFERENCES [dbo].[fotos] ([id])
+GO
+
+ALTER TABLE [dbo].[etiqueta] CHECK CONSTRAINT [FK_etiqueta_fotos1]
+GO
+
+ALTER TABLE [dbo].[etiqueta]  WITH CHECK ADD  CONSTRAINT [FK_etiqueta_usuarios1] FOREIGN KEY([usuarioId])
+REFERENCES [dbo].[usuarios] ([id])
+GO
+
+ALTER TABLE [dbo].[etiqueta] CHECK CONSTRAINT [FK_etiqueta_usuarios1]
+GO
+
+

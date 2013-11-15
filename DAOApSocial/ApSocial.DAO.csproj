@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDeDatos\DAOEtiqueta.cs" />
     <Compile Include="BaseDeDatos\DAOEstados.cs" />
+    <Compile Include="BaseDeDatos\DAOFotos.cs" />
     <Compile Include="BaseDeDatos\DAOGrupos.cs" />
     <Compile Include="BaseDeDatos\DAOSolicitud_Amistad.cs" />
     <Compile Include="BaseDeDatos\DBCommonAccess.cs" />
@@ -77,6 +79,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="BaseDeDatos\Scripts DB\CreateTB.AlbumFotos.txt" />
     <Content Include="BaseDeDatos\Scripts DB\CreateTB.Estados.txt" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -85,6 +88,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BaseDeDatos\Scripts DB\CreateDB.txt" />
+    <Content Include="BaseDeDatos\Scripts DB\CreateTB.Etiqueta.txt" />
+    <Content Include="BaseDeDatos\Scripts DB\CreateTB.Fotos.txt" />
     <Content Include="BaseDeDatos\Scripts DB\CreateTB.Grupos.txt" />
     <Content Include="BaseDeDatos\Scripts DB\CreateTB.SolicitudAmistad.txt" />
     <Content Include="BaseDeDatos\Scripts DB\CreateTB.Usuarios.txt" />

@@ -1,0 +1,38 @@
+﻿USE [AplicacionSocial]
+GO
+
+/****** Object:  Table [dbo].[album_fotos]    Script Date: 11/14/2013 20:36:08 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[album_fotos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[fecha_creado] [datetime] NOT NULL,
+	[mensaje] [varchar](255) NOT NULL,
+	[publico] [bit] NULL,
+	[usuario_origen] [int] NOT NULL,
+ CONSTRAINT [PK_album_fotos] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[album_fotos]  WITH CHECK ADD  CONSTRAINT [FK_album_fotos_usuarios] FOREIGN KEY([usuario_origen])
+REFERENCES [dbo].[usuarios] ([id])
+GO
+
+ALTER TABLE [dbo].[album_fotos] CHECK CONSTRAINT [FK_album_fotos_usuarios]
+GO
+
+

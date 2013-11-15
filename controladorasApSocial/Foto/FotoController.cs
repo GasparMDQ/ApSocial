@@ -15,7 +15,7 @@ namespace ApSocial.Controladora.Foto
             Fotos foto;
             try
             {
-                foto = new Fotos(url);
+                foto = new Fotos(url,1);
                 daoFotos.add(foto);
             }
             catch (Exception ex)
