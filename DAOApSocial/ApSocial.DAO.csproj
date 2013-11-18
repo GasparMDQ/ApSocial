@@ -75,6 +75,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BaseDeDatos\Scripts DB\Script Unificado.txt" />
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>

@@ -1,0 +1,268 @@
+USE [master]
+GO
+
+/****** Object:  Database [AplicacionSocial]    Script Date: 09/20/2013 20:31:48 ******/
+CREATE DATABASE [AplicacionSocial] ON  PRIMARY 
+( NAME = N'AplicacionSocial', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\DATA\AplicacionSocial.mdf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'AplicacionSocial_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\DATA\AplicacionSocial_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+USE [AplicacionSocial]
+GO
+
+/****** Object:  Table [dbo].[usuarios]    Script Date: 10/15/2013 20:58:07 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[usuarios](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[apellido] [varchar](50) NULL,
+	[nombre] [varchar](50) NOT NULL,
+	[email] [varchar](50) NOT NULL,
+	[password] [char](16) NOT NULL,
+	[residencia] [varchar](50) NULL,
+	[foto_usuario] [varchar](255) NOT NULL,
+	[fechaDeNacimiento] [datetime] NULL,
+	[enabled] [bit] NOT NULL,
+ CONSTRAINT [PK_usuarios] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+USE [AplicacionSocial]
+GO
+
+/****** Object:  Table [dbo].[solicitud_amistad]    Script Date: 09/26/2013 19:50:00 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[solicitud_amistad](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[solicitante] [int] NOT NULL,
+	[solicitado] [int] NOT NULL,
+	[aceptada] [bit] NOT NULL,
+ CONSTRAINT [PK_solicitud_amistad] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY],
+ CONSTRAINT [UQ_solicitud_amistad] UNIQUE NONCLUSTERED 
+(
+	[solicitante] ASC,
+	[solicitado] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[solicitud_amistad]  WITH CHECK ADD  CONSTRAINT [FK_solicitud_amistad_usuarios_solicitado] FOREIGN KEY([solicitado])
+REFERENCES [dbo].[usuarios] ([id])
+GO
+
+ALTER TABLE [dbo].[solicitud_amistad] CHECK CONSTRAINT [FK_solicitud_amistad_usuarios_solicitado]
+GO
+
+ALTER TABLE [dbo].[solicitud_amistad]  WITH CHECK ADD  CONSTRAINT [FK_solicitud_amistad_usuarios_solicitante] FOREIGN KEY([solicitante])
+REFERENCES [dbo].[usuarios] ([id])
+GO
+
+ALTER TABLE [dbo].[solicitud_amistad] CHECK CONSTRAINT [FK_solicitud_amistad_usuarios_solicitante]
+GO
+
+
+USE [AplicacionSocial]
+GO
+
+/****** Object:  Table [dbo].[album_fotos]    Script Date: 11/14/2013 20:36:08 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[album_fotos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[fecha_creado] [datetime] NOT NULL,
+	[mensaje] [varchar](255) NOT NULL,
+	[publico] [bit] NULL,
+	[usuario_origen] [int] NOT NULL,
+ CONSTRAINT [PK_album_fotos] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[album_fotos]  WITH CHECK ADD  CONSTRAINT [FK_album_fotos_usuarios] FOREIGN KEY([usuario_origen])
+REFERENCES [dbo].[usuarios] ([id])
+GO
+
+ALTER TABLE [dbo].[album_fotos] CHECK CONSTRAINT [FK_album_fotos_usuarios]
+GO
+
+
+USE [AplicacionSocial]
+GO
+
+/****** Object:  Table [dbo].[estados]    Script Date: 11/14/2013 20:36:08 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[estados](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[fecha_creado] [datetime] NOT NULL,
+	[mensaje] [varchar](255) NOT NULL,
+	[publico] [bit] NULL,
+	[usuario_origen] [int] NOT NULL,
+	[foto] [varchar](255) NULL,
+ CONSTRAINT [PK_estados] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[estados]  WITH CHECK ADD  CONSTRAINT [FK_estados_usuarios] FOREIGN KEY([usuario_origen])
+REFERENCES [dbo].[usuarios] ([id])
+GO
+
+ALTER TABLE [dbo].[estados] CHECK CONSTRAINT [FK_estados_usuarios]
+GO
+
+
+USE [AplicacionSocial]
+GO
+
+/****** Object:  Table [dbo].[fotos]    Script Date: 11/14/2013 21:30:32 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[fotos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[url] [varchar](255) NOT NULL,
+	[album_id] [int] NOT NULL,
+ CONSTRAINT [PK_fotos] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[fotos]  WITH CHECK ADD  CONSTRAINT [FK_fotos_album_fotos] FOREIGN KEY([id])
+REFERENCES [dbo].[album_fotos] ([id])
+GO
+
+ALTER TABLE [dbo].[fotos] CHECK CONSTRAINT [FK_fotos_album_fotos]
+GO
+
+
+USE [AplicacionSocial]
+GO
+
+/****** Object:  Table [dbo].[etiqueta]    Script Date: 11/14/2013 21:33:02 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[etiqueta](
+	[fotoId] [int] NOT NULL,
+	[usuarioId] [int] NOT NULL,
+ CONSTRAINT [PK_etiqueta_1] PRIMARY KEY CLUSTERED 
+(
+	[fotoId] ASC,
+	[usuarioId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[etiqueta]  WITH CHECK ADD  CONSTRAINT [FK_etiqueta_fotos1] FOREIGN KEY([fotoId])
+REFERENCES [dbo].[fotos] ([id])
+GO
+
+ALTER TABLE [dbo].[etiqueta] CHECK CONSTRAINT [FK_etiqueta_fotos1]
+GO
+
+ALTER TABLE [dbo].[etiqueta]  WITH CHECK ADD  CONSTRAINT [FK_etiqueta_usuarios1] FOREIGN KEY([usuarioId])
+REFERENCES [dbo].[usuarios] ([id])
+GO
+
+ALTER TABLE [dbo].[etiqueta] CHECK CONSTRAINT [FK_etiqueta_usuarios1]
+GO
+
+
+USE [AplicacionSocial]
+GO
+
+/****** Object:  Table [dbo].[grupos]    Script Date: 10/03/2013 20:48:52 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[grupos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[descripcion] [varchar](50) NULL,
+	[sistema] [bit] NOT NULL,
+ CONSTRAINT [PK_grupos] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[grupos] ADD  CONSTRAINT [DF_grupos_sistema]  DEFAULT ((1)) FOR [sistema]
+GO
+
+
