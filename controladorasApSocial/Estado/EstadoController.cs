@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ApSocial.Entidades;
-using ApSocial.DAO.Lista;
+//using ApSocial.DAO.Lista;
+using ApSocial.DAO.BaseDeDatos;
 
 namespace ApSocial.Controladora.Estado
 {

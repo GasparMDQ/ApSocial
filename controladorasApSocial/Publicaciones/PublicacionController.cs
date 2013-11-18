@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ApSocial.Entidades;
-using ApSocial.DAO.Lista;
+//using ApSocial.DAO.Lista;
+using ApSocial.DAO.BaseDeDatos;
 using ApSocial.Controladora.Amistades;
 using ApSocial.Controladora.Usuarios;
 
@@ -16,7 +17,7 @@ namespace ApSocial.Controladora.Publicaciones
     {
         private AmistadesController controladoraAmistad = new AmistadesController();
         private UsuarioController controladoraUsuario = new UsuarioController();
-        private DAOUsuario_Grupo daoUsuarioGrupo = DAOUsuario_Grupo.Instance();
+        //private DAOUsuario_Grupo daoUsuarioGrupo = DAOUsuario_Grupo.Instance();
         DAOAlbum_fotos daoAlbum = DAOAlbum_fotos.Instance();
         DAOEstados daoEstados = DAOEstados.Instance();
 

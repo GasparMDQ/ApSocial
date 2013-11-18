@@ -71,7 +71,7 @@ namespace VistaEscritorio
                 if (verificarDatos() == "")
                 {
                     recuperarEtiquetados(listAmigos);
-                    Fotos foto = controladoraFoto.nuevaFoto(nombreTXT.Text, pathTXT.Text, recuperarEtiquetados(listAmigos));
+                    Fotos foto = controladoraFoto.nuevaFoto(1, pathTXT.Text, recuperarEtiquetados(listAmigos));//FIX THIS ALBUM ID
                     this.IdFoto = foto.Id;
                     this.Close();
                 }
