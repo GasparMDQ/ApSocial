@@ -1,0 +1,14 @@
+﻿insert into album_fotos(fecha_creado,mensaje,publico,usuario_origen)
+values (getdate(),'album1', 'true',1);
+insert into album_fotos(fecha_creado,mensaje,publico,usuario_origen)
+values (getdate(),'album2', 'true',2);
+insert into album_fotos(fecha_creado,mensaje,publico,usuario_origen)
+values ('20130521','album3', 'true',3);
+insert into album_fotos(fecha_creado,mensaje,publico,usuario_origen)
+values ('20120714','album4', 'true',4);
+insert into album_fotos(fecha_creado,mensaje,publico,usuario_origen)
+values (getdate(),'album5', 'true',5);
+insert into album_fotos(fecha_creado,mensaje,publico,usuario_origen)
+values ('20130315','album6', 'true',6);
+insert into album_fotos(fecha_creado,mensaje,publico,usuario_origen)
+values ('20120413','album7', 'true',7);

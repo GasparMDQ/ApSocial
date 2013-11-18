@@ -22,12 +22,7 @@ namespace ApSocial.Controladora.Publicaciones
         DAOEstados daoEstados = DAOEstados.Instance();
 
 
-
-
-
-
-
-       /* public List<Publicacion> getPublicacionesPublicasByIDUsuario(int idUsuario)
+        public List<Publicacion> getPublicacionesPublicasByIDUsuario(int idUsuario)
         {
             //me da las publicaciones publicas de un usuario la uso luego recorriendo la lista de mis amigos 
             try
@@ -119,14 +114,13 @@ namespace ApSocial.Controladora.Publicaciones
         }
 
 
-        public List<Publicacion> verMuro(int usuarioId)
+        public List<Publicacion> verMuro(int usuarioId, int idlogueado)
         {
             List<Publicacion> listaPublicaciones = new List<Publicacion>();
             try
             {
-                listaPublicaciones = this.getPublicacionesPublicasDeMisAmigosYmias(usuarioId);
-                listaPublicaciones.AddRange(getPublicacionesPublicasByIDUsuario(usuarioId));//falta ordenar la lista 
-                //listaPublicaciones.Sort(
+                listaPublicaciones = this.getPublicacionesPublicasDeMisAmigosYmias(usuarioId, idlogueado);
+                listaPublicaciones.AddRange(getPublicacionesPublicasByIDUsuario(usuarioId));
                 return listaPublicaciones;
 
             }
@@ -134,7 +128,7 @@ namespace ApSocial.Controladora.Publicaciones
                 throw  ex; 
             }
         }
-        */
+        
 
 
 
