@@ -27,7 +27,7 @@ namespace ApSocial.Entidades
             this.Fecha_creado = fecha_creado;
             this.Foto_estado = foto_estado;
             this.Mensaje = mensaje;
-            this.Publico = true;
+            this.Publico = false;
             this.Grupo_id = grupo;
             this.Usuario_origen = usuario_origen;
         }
@@ -37,7 +37,7 @@ namespace ApSocial.Entidades
             this.Fecha_creado = fecha_creado;
             this.Foto_estado = foto_estado;
             this.Mensaje = mensaje;
-            this.Publico = false;
+            this.Publico = true;
             this.Usuario_origen = usuario_origen;
         }
 

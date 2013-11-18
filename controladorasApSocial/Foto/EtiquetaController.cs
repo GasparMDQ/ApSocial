@@ -13,7 +13,11 @@ namespace ApSocial.Controladora.Etiquetas
 
         public Etiqueta newEtiqueta(Fotos foto, Usuario user)
         {
-            return this.newEtiqueta(foto.Id, user.Id);
+            try {
+                return this.newEtiqueta(foto.Id, user.Id);
+            } catch (Exception ex) {
+                throw ex;
+            }
         }
 
         public Etiqueta newEtiqueta(int fotoId, int userId)
