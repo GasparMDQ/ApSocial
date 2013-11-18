@@ -67,6 +67,38 @@ namespace ApSocial.DAO.BaseDeDatos
             throw new Exception("No se puede buscar por ID una etiqueta");
         }
 
+        public Etiqueta searchByFotoAndUser(int fotoId, int userId)
+        {
+            string cmdText = "SELECT fotoId, usuarioId FROM etiqueta WHERE usuarioId = \'" + userId + "\' AND fotoId = \'" + fotoId + "\'";
+            try {
+                return this.searchOneBy(cmdText);
+            } catch (Exception ex) {
+                throw new Exception("No se encontro etiqueta para el usuario con ID " + userId + " en la foto con ID " + fotoId, ex);
+            }
+        }
+
+        public List<Etiqueta> searchByUsuario(int userId)
+        {
+            string cmdText = "SELECT fotoId, usuarioId FROM etiqueta WHERE usuarioId = \'" + userId + "\'";
+            try {
+                List<Etiqueta> lista = this.searchBy(cmdText);
+                return lista;
+            } catch (Exception ex) {
+                throw new Exception("No se encontraron etiquetas para el usuario con ID " + userId, ex);
+            }
+        }
+
+        public List<Etiqueta> searchByFoto(int fotoId)
+        {
+            string cmdText = "SELECT fotoId, usuarioId FROM etiqueta WHERE fotoId = \'" + fotoId + "\'";
+            try {
+                List<Etiqueta> lista = this.searchBy(cmdText);
+                return lista;
+            } catch (Exception ex) {
+                throw new Exception("No se encontraron etiquetas para el usuario con ID " + fotoId, ex);
+            }
+        }
+
         private Etiqueta searchOneBy(string cmdText)
         {
             try {
