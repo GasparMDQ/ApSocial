@@ -11,7 +11,7 @@ namespace ApSocial.Controladora.Estado
     {
        DAOFotos daoFotos = DAOFotos.Instance();
        DAOEstados daoEstados = DAOEstados.Instance();
-        public void nuevoEstado(int idUsuario, string mensaje, string nombreFoto, string url, List<Usuario> usuarios_etiquetados, bool publico)
+        public void nuevoEstado(int idUsuario, string mensaje, string nombreFoto, string url, List<Usuario> usuarios_etiquetados)
         {
             Fotos foto;
             Estados estado;
@@ -29,4 +29,6 @@ namespace ApSocial.Controladora.Estado
 
         }
     }
+
+
 }

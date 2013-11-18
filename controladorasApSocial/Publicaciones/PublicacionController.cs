@@ -14,10 +14,11 @@ namespace ApSocial.Controladora.Publicaciones
      */
     public class PublicacionController
     {
-        DAOPublicacion daoPublicacion = DAOPublicacion.Instance();
         private AmistadesController controladoraAmistad = new AmistadesController();
         private UsuarioController controladoraUsuario = new UsuarioController();
         private DAOUsuario_Grupo daoUsuarioGrupo = DAOUsuario_Grupo.Instance();
+        DAOAlbum_fotos daoAlbum = DAOAlbum_fotos.Instance();
+        DAOEstados daoEstados = DAOEstados.Instance();
 
 
 
@@ -25,17 +26,17 @@ namespace ApSocial.Controladora.Publicaciones
 
 
 
-
-        /*public List<Publicacion> getPublicacionesPublicasByIDUsuario(int idUsuario)
+       /* public List<Publicacion> getPublicacionesPublicasByIDUsuario(int idUsuario)
         {
             //me da las publicaciones publicas de un usuario la uso luego recorriendo la lista de mis amigos 
             try
             {
-                List<Publicacion> todasLaspublicaciones = daoPublicacion.getPublicacionesByidUsuario(idUsuario);
+                List<Publicacion> todasLaspublicaciones = daoAlbum.albumByidUsuario(idUsuario);
+                todasLaspublicaciones.AddRange(daoEstados.estadosByidUsuario(idUsuario));
                 List<Publicacion> publicacionesPublicas = new List<Publicacion>();
                 foreach (Publicacion publicacion in todasLaspublicaciones)
                 {
-                    if (this.isPublic(publicacion))
+                    if (publicacion.Publico)
                     {
                         publicacionesPublicas.Add(publicacion);
                     }
@@ -52,11 +53,12 @@ namespace ApSocial.Controladora.Publicaciones
             //devuelve las publicaciones privadas de un usuario la uso luego para filtrar cuales podre ver yo
             try
             {
-                List<Publicacion> todasLaspublicaciones = daoPublicacion.getPublicacionesByidUsuario(idUsuario);
+                List<Publicacion> todasLaspublicaciones = daoAlbum.albumByidUsuario(idUsuario);
+                todasLaspublicaciones.AddRange(daoEstados.estadosByidUsuario(idUsuario));
                 List<Publicacion> publicacionesPrivadas = new List<Publicacion>();
                 foreach (Publicacion publicacion in todasLaspublicaciones)
                 {
-                    if (!this.isPublic(publicacion))
+                    if (!publicacion.Publico)
                     {
                         publicacionesPrivadas.Add(publicacion);
                     }
@@ -70,7 +72,7 @@ namespace ApSocial.Controladora.Publicaciones
         }
 
 
-        public List<Publicacion> getPublicacionesPublicasDeMisAmigosYmias(int idUsuario)
+        public List<Publicacion> getPublicacionesPublicasDeMisAmigosYmias(int idUsuario, int idUsuarioLogueado)
         {
             try
             {
@@ -82,7 +84,8 @@ namespace ApSocial.Controladora.Publicaciones
                     publicaciones.AddRange(getPublicacionesPublicasByIDUsuario(usuario.Id));
                 }
                 //le sumo mis publicaciones
-                publicaciones.AddRange(daoPublicacion.getPublicacionesByidUsuario(idUsuario));
+                publicaciones.AddRange(daoEstados.estadosByidUsuario(idUsuarioLogueado));
+                publicaciones.AddRange(daoAlbum.albumByidUsuario(idUsuarioLogueado));
                 return publicaciones;
             }
             catch (Exception ex)
@@ -129,8 +132,8 @@ namespace ApSocial.Controladora.Publicaciones
             catch (Exception ex) { 
                 throw  ex; 
             }
-        }*/
-
+        }
+        */
 
 
 

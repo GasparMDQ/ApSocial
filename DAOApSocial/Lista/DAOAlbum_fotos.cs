@@ -69,5 +69,24 @@ namespace ApSocial.DAO.Lista
         }
         public List<Album_fotos> getAll() { return listaAlbum; }
 
+        public List<Publicacion> albumByidUsuario(int idUsuario)
+        {
+            try
+            {
+                List<Publicacion> listaById = new List<Publicacion>();
+                foreach (Publicacion publicacion in listaAlbum)
+                {
+                    if (publicacion.Usuario_origen == idUsuario)
+                    {
+                        listaById.Add(publicacion);
+                    }
+                } return listaById;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

@@ -80,6 +80,26 @@ namespace ApSocial.DAO.Lista
             } return rta;
         }
 
+
+        public List<Publicacion> estadosByidUsuario(int idUsuario)
+        {
+            try
+            {
+                List<Publicacion> listaById = new List<Publicacion>();
+                foreach (Publicacion publicacion in listaDeEstados)
+                {
+                    if (publicacion.Usuario_origen == idUsuario)
+                    {
+                        listaById.Add(publicacion);
+                    }
+                } return listaById;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 
 }

@@ -57,7 +57,6 @@
     <Compile Include="Lista\DAOEstados.cs" />
     <Compile Include="Lista\DAOFotos.cs" />
     <Compile Include="Lista\DAOGrupos.cs" />
-    <Compile Include="Lista\DAOPublicacion.cs" />
     <Compile Include="Lista\DAOSolicitud_Amistad.cs" />
     <Compile Include="Lista\DAOUsuario-Grupo.cs" />
     <Compile Include="Lista\DAOUsuario.cs" />
