@@ -1,0 +1,23 @@
+﻿insert into solicitud_Amistad(solicitante,solicitado,aceptada)
+values(1,2,'true');
+insert into solicitud_Amistad(solicitante,solicitado,aceptada)
+values(1,3,'true');
+insert into solicitud_Amistad(solicitante,solicitado,aceptada)
+values(1,4,'true');
+insert into solicitud_Amistad(solicitante,solicitado,aceptada)
+values(1,5,'false');
+insert into solicitud_Amistad(solicitante,solicitado,aceptada)
+values(2,3,'true');
+insert into solicitud_Amistad(solicitante,solicitado,aceptada)
+values(2,4,'true');
+insert into solicitud_Amistad(solicitante,solicitado,aceptada)
+values(2,5,'false');
+
+insert into solicitud_Amistad(solicitante,solicitado,aceptada)
+values(4,3,'true');
+insert into solicitud_Amistad(solicitante,solicitado,aceptada)
+values(7,6,'true');
+insert into solicitud_Amistad(solicitante,solicitado,aceptada)
+values(8,5,'true');
+insert into solicitud_Amistad(solicitante,solicitado,aceptada)
+values(2,9,'false');

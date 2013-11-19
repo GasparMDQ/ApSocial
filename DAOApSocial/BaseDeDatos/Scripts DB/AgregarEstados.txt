@@ -1,0 +1,16 @@
+﻿insert into estados (fecha_creado,mensaje,publico,usuario_origen,foto)
+values(getdate(),'Buen Dia','true',1,'path');
+insert into estados (fecha_creado,mensaje,publico,usuario_origen,foto)
+values('20130111','mes de enero','true',2,'path');
+insert into estados (fecha_creado,mensaje,publico,usuario_origen,foto)
+values('20130506','Mega patin day 2013','true',3,'path');
+insert into estados (fecha_creado,mensaje,publico,usuario_origen,foto)
+values('20131125','voy a terminar la facu','true',4,'path');
+insert into estados (fecha_creado,mensaje,publico,usuario_origen,foto)
+values('20130101','No soporto a luchi','true',5,'path');
+insert into estados (fecha_creado,mensaje,publico,usuario_origen,foto)
+values('20130504','LLamen al cel cualquier cosa','true',6,'path');
+insert into estados (fecha_creado,mensaje,publico,usuario_origen,foto)
+values('20131010','Salimos?','true',7,'path');
+insert into estados (fecha_creado,mensaje,publico,usuario_origen,foto)
+values('20130921','feliz primavera','true',8,'path');
