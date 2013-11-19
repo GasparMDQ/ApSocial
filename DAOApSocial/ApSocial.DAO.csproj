@@ -75,10 +75,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BaseDeDatos\Scripts DB\Script Unificado.txt" />
+    <Content Include="BaseDeDatos\Scripts DB\agregarAlbums.txt" />
+    <Content Include="BaseDeDatos\Scripts DB\AgregarEstados.txt" />
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="BaseDeDatos\Scripts DB\AgregarSolitudes.txt" />
     <Content Include="BaseDeDatos\Scripts DB\CreateTB.AlbumFotos.txt" />
     <Content Include="BaseDeDatos\Scripts DB\CreateTB.Estados.txt" />
     <None Include="Properties\Settings.settings">

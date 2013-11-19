@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ApSocial.Entidades;
-//using ApSocial.DAO.Lista;
-using ApSocial.DAO.BaseDeDatos;
+using ApSocial.DAO.Lista;
 using ApSocial.Controladora.Amistades;
 using ApSocial.Controladora.Usuarios;
 
@@ -17,7 +16,7 @@ namespace ApSocial.Controladora.Publicaciones
     {
         private AmistadesController controladoraAmistad = new AmistadesController();
         private UsuarioController controladoraUsuario = new UsuarioController();
-        //private DAOUsuario_Grupo daoUsuarioGrupo = DAOUsuario_Grupo.Instance();
+        private DAOUsuario_Grupo daoUsuarioGrupo = DAOUsuario_Grupo.Instance();
         DAOAlbum_fotos daoAlbum = DAOAlbum_fotos.Instance();
         DAOEstados daoEstados = DAOEstados.Instance();
 
@@ -68,7 +67,7 @@ namespace ApSocial.Controladora.Publicaciones
         }
 
 
-        public List<Publicacion> getPublicacionesPublicasDeMisAmigosYmias(int idUsuario, int idUsuarioLogueado)
+        public List<Publicacion> getPublicacionesPublicasDeMisAmigosYmias(int idUsuario)
         {
             try
             {
@@ -80,8 +79,8 @@ namespace ApSocial.Controladora.Publicaciones
                     publicaciones.AddRange(getPublicacionesPublicasByIDUsuario(usuario.Id));
                 }
                 //le sumo mis publicaciones
-                publicaciones.AddRange(daoEstados.estadosByidUsuario(idUsuarioLogueado));
-                publicaciones.AddRange(daoAlbum.albumByidUsuario(idUsuarioLogueado));
+                publicaciones.AddRange(daoEstados.estadosByidUsuario(idUsuario));
+                publicaciones.AddRange(daoAlbum.albumByidUsuario(idUsuario));
                 return publicaciones;
             }
             catch (Exception ex)
@@ -119,7 +118,7 @@ namespace ApSocial.Controladora.Publicaciones
             List<Publicacion> listaPublicaciones = new List<Publicacion>();
             try
             {
-                listaPublicaciones = this.getPublicacionesPublicasDeMisAmigosYmias(usuarioId, idlogueado);
+                listaPublicaciones = this.getPublicacionesPublicasDeMisAmigosYmias(usuarioId);
                 listaPublicaciones.AddRange(getPublicacionesPublicasByIDUsuario(usuarioId));
                 return listaPublicaciones;
 

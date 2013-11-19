@@ -6,9 +6,6 @@ insert into solicitud_Amistad(solicitante,solicitado,aceptada)
 values(1,4,'true');
 insert into solicitud_Amistad(solicitante,solicitado,aceptada)
 values(1,5,'false');
-
-insert into solicitud_Amistad(solicitante,solicitado,aceptada)
-values(2,1,'true');
 insert into solicitud_Amistad(solicitante,solicitado,aceptada)
 values(2,3,'true');
 insert into solicitud_Amistad(solicitante,solicitado,aceptada)
