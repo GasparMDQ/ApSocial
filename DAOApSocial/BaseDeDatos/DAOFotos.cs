@@ -74,17 +74,25 @@ namespace ApSocial.DAO.BaseDeDatos
         {
             string cmdText = "SELECT id, url, album_id FROM fotos WHERE id = " + Convert.ToString(id);
             try {
-                Fotos foto = this.searchOneBy(cmdText);
-                return foto;
+                return this.searchOneBy(cmdText);
             } catch (Exception ex) {
                 throw new Exception("No se encontro la foto con id " + Convert.ToString(id), ex);
+            }
+        }
+
+        public List<Fotos> searchByAlbum(int Albumid)
+        {
+            string cmdText = "SELECT id, url, album_id FROM fotos WHERE album_id = " + Convert.ToString(Albumid);
+            try {
+                return this.searchBy(cmdText);
+            } catch (Exception ex) {
+                throw new Exception("No se encontraron fotos para el album con ID " + Convert.ToString(Albumid), ex);
             }
         }
 
         private Fotos searchOneBy(string cmdText)
         {
             try {
-
                 DataTable dt = this.getData(cmdText);
                 if (dt.Rows.Count > 1) {
                     throw new Exception("Se encontró más de un resultado");

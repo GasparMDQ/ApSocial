@@ -36,13 +36,26 @@ namespace ApSocial.Controladora.Foto
 
         public Fotos buscarFoto(int id)
         {
-            Fotos foto = daoFotos.searchById(id);
-            return foto;
+            try {
+                return daoFotos.searchById(id);
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        public List<Fotos> buscarFotosPorAlbum(Album_fotos album)
+        {
+            try {
+                return daoFotos.searchByAlbum(album.Id);
+            } catch (Exception ex) {
+                throw ex;
+            }
         }
 
         public void borrarFoto(Fotos foto)
         {
             daoFotos.remove(foto);
         }
+
     }
 }

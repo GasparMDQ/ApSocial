@@ -123,12 +123,12 @@ namespace ApSocial.DAO.BaseDeDatos
         private Album_fotos getAlbumFotosFromDataRow(DataRow dr)
         {
             Album_fotos album_fotos = new Album_fotos(
-                    (DateTime)dr["fecha_creado"],
                     dr["mensaje"].ToString(),
                     Convert.ToInt32(dr["usuario_origen"].ToString())
                 );
             //Seteo el ID del Album de Fotos
             album_fotos.Id = (int)dr["id"];
+            album_fotos.Fecha_creado = (DateTime)dr["fecha_creado"];
 
             //Devuelvo el album de fotos obtenido
             return album_fotos;

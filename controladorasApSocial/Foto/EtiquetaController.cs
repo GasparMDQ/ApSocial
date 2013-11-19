@@ -78,6 +78,15 @@ namespace ApSocial.Controladora.Etiquetas
             }
         }
 
+        public void removeEtiqueta(Etiqueta etiqueta)
+        {
+            try {
+                daoEtiqueta.remove(daoEtiqueta.searchByFotoAndUser(etiqueta.FotoId, etiqueta.UsuarioId));
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
         private bool existEtiqueta(int fotoId, int userId)
         {
             try {

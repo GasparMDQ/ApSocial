@@ -127,7 +127,6 @@ namespace ApSocial.DAO.BaseDeDatos
             Estados estado;
             if (dr["grupo"].ToString() != null) {
                 estado = new Estados(
-                    (DateTime)dr["fecha_creado"],
                     dr["mensaje"].ToString(),
                     Convert.ToInt32(dr["usuario_origen"].ToString()),
                     Convert.ToInt32(dr["grupo"].ToString()),
@@ -135,7 +134,6 @@ namespace ApSocial.DAO.BaseDeDatos
                  );
             } else {
                 estado = new Estados(
-                    (DateTime)dr["fecha_creado"],
                     dr["mensaje"].ToString(),
                     Convert.ToInt32(dr["usuario_origen"].ToString()),
                     dr["foto"].ToString()
@@ -143,6 +141,7 @@ namespace ApSocial.DAO.BaseDeDatos
             }
             //Seteo el ID del Estado
             estado.Id = (int)dr["id"];
+            estado.Fecha_creado = (DateTime)dr["fecha_creado"];
 
             //Devuelvo el estado obtenido
             return estado;

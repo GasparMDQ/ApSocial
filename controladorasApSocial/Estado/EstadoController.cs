@@ -8,28 +8,21 @@ using ApSocial.DAO.BaseDeDatos;
 
 namespace ApSocial.Controladora.Estado
 {
-   public class EstadoController
+    public class EstadoController
     {
-       DAOFotos daoFotos = DAOFotos.Instance();
-       DAOEstados daoEstados = DAOEstados.Instance();
-        public void nuevoEstado(int idUsuario, string mensaje, string nombreFoto, string url, List<Usuario> usuarios_etiquetados)
+        DAOEstados daoEstados = DAOEstados.Instance();
+
+        public void nuevoEstado(int idUsuario, string mensaje, string url)
         {
-            Fotos foto;
             Estados estado;
-            try
-            {
-                foto = new Fotos(url,1);//Fix THIS
-                daoFotos.add(foto);
-                estado = new Estados(DateTime.Today, mensaje, idUsuario, foto.ToString());
+            try {
+                estado = new Estados(mensaje, idUsuario, url);
                 daoEstados.add(estado);
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
 
         }
     }
-
 
 }

@@ -9,9 +9,9 @@ namespace ApSocial.Entidades
         //public List<Fotos> fotos;
         //El controlador de album de fotos, debera generar las entidades fotos y asignarles el album correspondiente (via constructor)
 
-        public Album_fotos(DateTime fecha_creado, string mensaje, int usuario_origen)
+        public Album_fotos(string mensaje, int usuario_origen)
         {
-            this.Fecha_creado = fecha_creado;
+            this.Fecha_creado = DateTime.Today;
             this.Mensaje = mensaje;
             this.Publico = true;
             this.Usuario_origen = usuario_origen;

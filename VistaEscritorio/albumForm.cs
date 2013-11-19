@@ -52,7 +52,7 @@ namespace VistaEscritorio
         {
             try
             {
-                    Album_fotos nuevoAlbum = new Album_fotos(DateTime.Today, albumNameTXT.Text, Session.IdUsuarioLogueado);
+                    Album_fotos nuevoAlbum = new Album_fotos(albumNameTXT.Text, Session.IdUsuarioLogueado);
             }
             catch (Exception ex)
             {
