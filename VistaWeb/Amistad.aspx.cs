@@ -49,7 +49,7 @@ namespace VistaWeb
             } catch (Exception ex) {
                 this.resultadoSolicitud.Text = "<div class=\"alert alert-danger alert-dismissable\">";
                 this.resultadoSolicitud.Text += "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
-                this.resultadoSolicitud.Text += "<strong>Error!</strong>" + ex.Message + "</div>";
+                this.resultadoSolicitud.Text += "<strong>Error!</strong> " + ex.Message + "</div>";
 
             }
         }

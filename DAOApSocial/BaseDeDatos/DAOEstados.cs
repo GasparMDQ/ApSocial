@@ -33,13 +33,23 @@ namespace ApSocial.DAO.BaseDeDatos
 
         public void add(Estados estado)
         {
-            string cmdText = "INSERT INTO estados (fecha_creado, mensaje, publico, usuario_origen, foto) VALUES (@Fecha,@Mensaje,@Publico,@Usuario,@Foto)";
+            string cmdText;
             Dictionary<string, Object> parametros = new Dictionary<string, Object>();
-            parametros.Add("@Fecha", estado.Fecha_creado);
-            parametros.Add("@Mensaje", estado.Mensaje);
-            parametros.Add("@Publico", estado.Publico);
-            parametros.Add("@Usuario", estado.Usuario_origen);
-            parametros.Add("@Foto", estado.Foto_estado);
+
+            if (estado.Foto_estado == null) {
+                cmdText = "INSERT INTO estados (fecha_creado, mensaje, publico, usuario_origen) VALUES (@Fecha,@Mensaje,@Publico,@Usuario)";
+                parametros.Add("@Fecha", estado.Fecha_creado);
+                parametros.Add("@Mensaje", estado.Mensaje);
+                parametros.Add("@Publico", estado.Publico);
+                parametros.Add("@Usuario", estado.Usuario_origen);
+            } else {
+                cmdText = "INSERT INTO estados (fecha_creado, mensaje, publico, usuario_origen, foto) VALUES (@Fecha,@Mensaje,@Publico,@Usuario,@Foto)";
+                parametros.Add("@Fecha", estado.Fecha_creado);
+                parametros.Add("@Mensaje", estado.Mensaje);
+                parametros.Add("@Publico", estado.Publico);
+                parametros.Add("@Usuario", estado.Usuario_origen);
+                parametros.Add("@Foto", estado.Foto_estado);
+            }
             try {
                 this.setData(cmdText, parametros);
             } catch (Exception ex) {

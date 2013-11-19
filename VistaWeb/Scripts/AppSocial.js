@@ -7,4 +7,9 @@
             $('#detalleUsuario').html(data);
         })
     });
+
+    $('#new-estado a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
 });

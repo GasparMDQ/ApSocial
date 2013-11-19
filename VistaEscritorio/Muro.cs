@@ -32,7 +32,7 @@ namespace VistaEscritorio
             try
             {
                 List<Publicacion> miLista = new List<Publicacion>();
-                Estados miEstado = new Estados(DateTime.Today, "blabla", Session.IdUsuarioLogueado, "sasa");
+                Estados miEstado = new Estados("blabla", Session.IdUsuarioLogueado, "sasa");
                 foreach (Publicacion publicacion in miLista)
                 {
                     string nombre = "- " + (controladoraUsuarios.getUsuarioById(publicacion.Id)).Nombre + (controladoraUsuarios.getUsuarioById(publicacion.Id)).Apellido + " -";
