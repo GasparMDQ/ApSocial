@@ -50,6 +50,10 @@ namespace ApSocial.Entidades
         {
 
         }
+        public override string ToString()
+        {
+            return this.Mensaje + " " + this.Usuario_origen;
+        }
 
     }
 }

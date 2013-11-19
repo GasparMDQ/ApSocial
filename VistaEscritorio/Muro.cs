@@ -21,22 +21,20 @@ namespace VistaEscritorio
         public Muro()
         {
             InitializeComponent();
-            inicializarListaPublicaciones(/*controladoraPublicaciones.getPublicacionesPublicasDeMisAmigosYmias(Session.IdUsuarioLogueado)*/);
+            inicializarListaPublicaciones(controladoraPublicaciones.getPublicacionesPublicasDeMisAmigosYmias(Session.IdUsuarioLogueado));
 
         }
 
 
 
-        public void inicializarListaPublicaciones(/*List<Publicacion> miLista*/) 
+        public void inicializarListaPublicaciones(List<Publicacion> miLista) 
         {
             try
             {
-                List<Publicacion> miLista = new List<Publicacion>();
-                Estados miEstado = new Estados("blabla", Session.IdUsuarioLogueado, "sasa");
+              
                 foreach (Publicacion publicacion in miLista)
                 {
-                    string nombre = "- " + (controladoraUsuarios.getUsuarioById(publicacion.Id)).Nombre + (controladoraUsuarios.getUsuarioById(publicacion.Id)).Apellido + " -";
-                    listPublicaciones.Items.Add(publicacion.Mensaje.Substring(0, 30) + nombre);
+                    listPublicaciones.Items.Add(publicacion);
 
                 }
             }
