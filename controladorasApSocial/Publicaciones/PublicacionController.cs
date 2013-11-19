@@ -76,11 +76,12 @@ namespace ApSocial.Controladora.Publicaciones
                 foreach (Usuario usuario in usuariosAmigos)
                 {
                     //voy concatenando todas las publicaciones que son publicas de mis amigos
-                    publicaciones.AddRange(getPublicacionesPublicasByIDUsuario(usuario.Id));
+                    publicaciones = publicaciones.Concat(getPublicacionesPublicasByIDUsuario(usuario.Id)).ToList();
+                    //publicaciones.AddRange(getPublicacionesPublicasByIDUsuario(usuario.Id));
                 }
                 //le sumo mis publicaciones
-                publicaciones.AddRange(daoEstados.estadosByidUsuario(idUsuario));
-                publicaciones.AddRange(daoAlbum.albumByidUsuario(idUsuario));
+                /*publicaciones.AddRange(daoEstados.estadosByidUsuario(idUsuario));
+                publicaciones.AddRange(daoAlbum.albumByidUsuario(idUsuario));*/
                 return publicaciones;
             }
             catch (Exception ex)
