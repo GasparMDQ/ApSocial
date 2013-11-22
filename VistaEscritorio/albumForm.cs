@@ -17,6 +17,7 @@ namespace VistaEscritorio
         PublicacionController controladoraPublicacion = new PublicacionController();
         FotoController controladoraFoto = new FotoController();
         List<Fotos> fotosDelAlbum = new List<Fotos>();
+        public int albumid = -1;
         
         public albumForm()
         {
@@ -34,6 +35,8 @@ namespace VistaEscritorio
         {
             try
             {
+                Album_fotos album = new Album_fotos(albumNameTXT.Text, Session.IdUsuarioLogueado);
+                //albumid= necesito un metodo para buscar en el dao y q me devuelve el id del album q acabo de insertar
                 nuevaFoto newPic = new nuevaFoto();
                 newPic.ShowDialog();
                 int fotoId = newPic.IdFoto;
