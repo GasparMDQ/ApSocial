@@ -24,7 +24,7 @@ namespace ApSocial.Entidades
         //Si se pasa grupo, se setea la privacidad en true, sino es false
         public Estados(string mensaje, int usuario_origen, int grupo, string foto_estado)
         {
-            this.Fecha_creado = DateTime.Today;
+            this.Fecha_creado = DateTime.Now;
             this.Foto_estado = foto_estado;
             this.Mensaje = mensaje;
             this.Publico = false;
@@ -34,7 +34,7 @@ namespace ApSocial.Entidades
 
         public Estados(string mensaje, int usuario_origen, string foto_estado)
         {
-            this.Fecha_creado = DateTime.Today;
+            this.Fecha_creado = DateTime.Now;
             this.Foto_estado = foto_estado;
             this.Mensaje = mensaje;
             this.Publico = true;

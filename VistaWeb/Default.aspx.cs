@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using ApSocial.Controladora.Amistades;
 using ApSocial.Controladora.Estado;
 using ApSocial.Controladora.Publicaciones;
+using ApSocial.Controladora.Usuarios;
 using ApSocial.Entidades;
 
 namespace VistaWeb
@@ -16,6 +17,7 @@ namespace VistaWeb
         private AmistadesController controladoraAmistad = new AmistadesController();
         private EstadoController controladoraEstado = new EstadoController();
         private PublicacionController controladoraPublicacion = new PublicacionController();
+        private UsuarioController controladoraUsuario = new UsuarioController();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,7 +39,8 @@ namespace VistaWeb
             Publicaciones.Text = "";
 
             foreach (Publicacion publi in publicaciones) {
-                Publicaciones.Text += publi.Mensaje + "<br />";
+                Publicaciones.Text += controladoraUsuario.getUsuarioById(publi.Usuario_origen).FullName +
+                    ": "+ publi.Mensaje + " | " + publi.Fecha_creado.ToString() + "<br />";
             }
             
 

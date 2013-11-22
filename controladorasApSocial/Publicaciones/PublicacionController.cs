@@ -123,7 +123,8 @@ namespace ApSocial.Controladora.Publicaciones
             List<Publicacion> listaPublicaciones = new List<Publicacion>();
             try
             {
-                listaPublicaciones = this.getPublicacionesPublicasDeMisAmigosYmias(usuarioId);
+                listaPublicaciones = this.getPublicacionesPublicasDeMisAmigosYmias(usuarioId).OrderByDescending(p => p.Fecha_creado).ToList();
+                
                 return listaPublicaciones;
             }
             catch (Exception ex) { 
