@@ -87,6 +87,20 @@ namespace ApSocial.DAO.Lista
                 throw ex;
             }
         }
+        public List<Album_fotos> searchByUserId(int id) 
+        { 
+            try{
+                List<Album_fotos> albumsDeUnUsuario=new List<Album_fotos>;
+                foreach(Album_fotos album in listaAlbum){
+                    if(album.Usuario_origen==id){
+                        albumsDeUnUsuario.Add(album);
+                    }
+                }return albumsDeUnUsuario;
+            }catch(Exception ex){
+                throw ex;
+            }
+        }
+
 
     }
 }

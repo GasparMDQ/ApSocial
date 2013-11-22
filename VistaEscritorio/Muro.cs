@@ -55,6 +55,7 @@ namespace VistaEscritorio
         {
             Publicacion publicacion=(Publicacion)listPublicaciones.SelectedItem;
             txtDetalle.Text = publicacion.Mensaje;
+            //falta mostrar la imagen
         }
     }
 }
