@@ -10,6 +10,9 @@ using ApSocial.Entidades;
 using ApSocial.Controladora.Usuarios;
 using ApSocial.Controladora.Publicaciones;
 
+
+
+
 namespace VistaEscritorio
 {
     public partial class Muro : Form
@@ -17,12 +20,16 @@ namespace VistaEscritorio
         UsuarioController controladoraUsuarios = new UsuarioController();
         PublicacionController controladoraPublicaciones = new PublicacionController();
 
-
+        
         public Muro()
         {
             InitializeComponent();
-            inicializarListaPublicaciones(controladoraPublicaciones.getPublicacionesPublicasDeMisAmigosYmias(Session.IdUsuarioLogueado));
-
+            try
+            {
+                inicializarListaPublicaciones(controladoraPublicaciones.verMuro(Session.IdUsuarioLogueado));
+            }catch (Exception ex){
+                MessageBox.Show("error al cargar las publicaciones",ex.Message);
+            }
         }
 
 
@@ -42,10 +49,12 @@ namespace VistaEscritorio
                 MessageBox.Show("error");
             } 
         }
+        
 
         private void listPublicaciones_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            Publicacion publicacion=(Publicacion)listPublicaciones.SelectedItem;
+            txtDetalle.Text = publicacion.Mensaje;
         }
     }
 }

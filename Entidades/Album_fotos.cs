@@ -19,5 +19,9 @@ namespace ApSocial.Entidades
 
         ~Album_fotos() { }
         public override void Dispose() { }
+        public override string ToString()
+        {
+            return this.Mensaje+ this.Usuario_origen;
+        }
     }
 }

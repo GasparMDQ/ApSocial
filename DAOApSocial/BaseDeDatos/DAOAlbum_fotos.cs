@@ -133,5 +133,6 @@ namespace ApSocial.DAO.BaseDeDatos
             //Devuelvo el album de fotos obtenido
             return album_fotos;
         }
+
     }
 }
