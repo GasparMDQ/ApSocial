@@ -189,7 +189,7 @@ GO
 SET ANSI_PADDING OFF
 GO
 
-ALTER TABLE [dbo].[fotos]  WITH CHECK ADD  CONSTRAINT [FK_fotos_album_fotos] FOREIGN KEY([id])
+ALTER TABLE [dbo].[fotos]  WITH CHECK ADD  CONSTRAINT [FK_fotos_album_fotos] FOREIGN KEY([album_id])
 REFERENCES [dbo].[album_fotos] ([id])
 GO
 
