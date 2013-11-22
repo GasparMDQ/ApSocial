@@ -16,6 +16,9 @@ namespace ApSocial.Controladora.Estado
         {
             Estados estado;
             try {
+                if (mensaje == "") {
+                    throw new Exception("Debe ingresar un mensaje");
+                }
                 estado = new Estados(mensaje, idUsuario, url);
                 daoEstados.add(estado);
             } catch (Exception ex) {

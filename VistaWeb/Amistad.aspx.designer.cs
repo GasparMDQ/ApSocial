@@ -22,13 +22,40 @@ namespace VistaWeb {
         protected global::System.Web.UI.WebControls.Label solicitudesPendientesLbl;
         
         /// <summary>
-        /// Control OpcionesSolicitud.
+        /// Control idSolicitante.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal OpcionesSolicitud;
+        protected global::System.Web.UI.WebControls.HiddenField idSolicitante;
+        
+        /// <summary>
+        /// Control ListaSolicitudes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox ListaSolicitudes;
+        
+        /// <summary>
+        /// Control AceptarAmistad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AceptarAmistad;
+        
+        /// <summary>
+        /// Control RechazarAmistad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button RechazarAmistad;
         
         /// <summary>
         /// Control resultadoSolicitud.

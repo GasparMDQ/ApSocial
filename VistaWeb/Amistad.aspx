@@ -9,16 +9,30 @@
                 <asp:Label ID="solicitudesPendientesLbl" runat="server" Text="0"></asp:Label></span></h3>
         <div class="row">
             <div class="col-md-2">
-                <select id="ListaSolicitudes" name="D1">
-                    <asp:Literal ID="OpcionesSolicitud" runat="server"></asp:Literal>
-                </select></div>
-            <div class="col-md-9 col-md-offset-1" id="detalleUsuario">
+                <asp:HiddenField ID="idSolicitante" runat="server" Value="0"/>
+                <asp:ListBox ID="ListaSolicitudes" runat="server" name="D1"></asp:ListBox>
+            </div>
+            <div class="col-md-2 col-md-offset-1" id="detalleUsuario">
+            </div>
+            <div class="col-md-1" id="crud">
+                <div class="row">
+                    <p>
+                        <asp:Button ID="AceptarAmistad" runat="server" Text="Aceptar" 
+                            CssClass="btn btn-success btn-block" onclick="AceptarAmistad_Click" />
+                    </p>
+                </div>
+                <div class="row">
+                    <p>
+                        <asp:Button ID="RechazarAmistad" runat="server" Text="Rechazar" 
+                            CssClass="btn btn-danger btn-block" onclick="RechazarAmistad_Click" />
+                    </p>
+                </div>
             </div>
         </div>
     </div>
     <div class="row well">
         <p>
-            <button class="btn btn-info" data-toggle="modal" data-target="#newFriend">Agregar amigo</button>
+            <button class="btn btn-info" data-toggle="modal" data-target="#newFriend">Agregar nuevo amigo</button>
         </p>
         <span class="alert-danger">
             <asp:Literal ID="resultadoSolicitud" runat="server"></asp:Literal>

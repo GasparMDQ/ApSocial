@@ -30,13 +30,10 @@ namespace VistaWeb
 
             //Cargar el Literal con la lista de solicitudes
             List<Usuario> lista =  this.controladoraAmistades.getAllUsuariosSolicitudesFromUser(this.usuario);
-            String contenidoLiteral = "";
-            foreach(Usuario user in lista){
-                contenidoLiteral += "<option value=\""+user.Id+"\">"+user.Nombre+" "+user.Apellido+"</option>";
-            }
-            this.OpcionesSolicitud.Text = contenidoLiteral;
-
-            //@todo implementar ajax para levantar los datos del usuario seleccionado en el select
+            ListaSolicitudes.DataValueField = "Id";
+            ListaSolicitudes.DataTextField = "FullName";
+            ListaSolicitudes.DataSource = lista;
+            ListaSolicitudes.DataBind();
         }
 
         protected void enviarSolicitud_Click(object sender, EventArgs e)
@@ -51,6 +48,28 @@ namespace VistaWeb
                 this.resultadoSolicitud.Text += "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
                 this.resultadoSolicitud.Text += "<strong>Error!</strong> " + ex.Message + "</div>";
 
+            }
+        }
+
+        protected void AceptarAmistad_Click(object sender, EventArgs e)
+        {
+            try {
+                controladoraAmistades.aceptarAmistad(this.usuario, Convert.ToInt32(this.idSolicitante.Value));
+                // Indicar con una alerta que se acepto a fulano de tal
+                setPendingRequests();
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        protected void RechazarAmistad_Click(object sender, EventArgs e)
+        {
+            try {
+                controladoraAmistades.rechazarAmistad(this.usuario, Convert.ToInt32(this.idSolicitante.Value));
+                // Indicar con una alerta que se rechazo a fulano de tal
+                setPendingRequests();
+            } catch (Exception ex) {
+                throw ex;
             }
         }
 

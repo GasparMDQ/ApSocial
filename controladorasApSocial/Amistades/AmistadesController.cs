@@ -140,6 +140,16 @@ namespace ApSocial.Controladora.Amistades
             }
         }
 
+        public void rechazarAmistad(int usuarioLogueado, int solicitante)
+        {
+            try {
+                Solicitud_Amistad solicitud = dataAmistades.getOneByUsers(controladoraUsuario.getUsuarioById(usuarioLogueado), controladoraUsuario.getUsuarioById(solicitante));
+                dataAmistades.remove(solicitud);
+            } catch (Exception ex) {
+                throw new Exception("No se pudo rechazar la solicitud", ex);
+            }
+        }
+
         public void aceptarAmistad(int usuarioLogueado, Usuario solicitante)
         {
             try {
@@ -149,6 +159,17 @@ namespace ApSocial.Controladora.Amistades
                 throw new Exception("No se pudo aceptar la solicitud", ex);
             }
         }
+
+        public void aceptarAmistad(int usuarioLogueado, int solicitante)
+        {
+            try {
+                Solicitud_Amistad solicitud = dataAmistades.getOneByUsers(controladoraUsuario.getUsuarioById(usuarioLogueado), controladoraUsuario.getUsuarioById(solicitante));
+                this.aceptarSolicitud(solicitud);
+            } catch (Exception ex) {
+                throw new Exception("No se pudo aceptar la solicitud", ex);
+            }
+        }
+
 
     }
 }

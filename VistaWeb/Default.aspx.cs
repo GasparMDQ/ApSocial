@@ -30,12 +30,15 @@ namespace VistaWeb
         protected void nuevoEstado_Click(object sender, EventArgs e)
         {
             try {
-                //@TODO Verificar que el estado no este vacio!!!!!!!
                 string fotoUrl = this.UploadFile(estadoFoto);
                 controladoraEstado.nuevoEstado(Convert.ToInt32(Session["usuarioLogueado"].ToString()), estadoMsg.Text, fotoUrl);
                 estadoMsg.Text = "";
+                estadoMsg.Attributes.Add("placeholder", "En que estas pensando ...");
+                ContenedorFormulario.CssClass = "form-group";
             } catch (Exception ex) {
-                throw ex;
+                // Informar a la vista el error de la excepcion.
+                estadoMsg.Attributes.Add("placeholder",ex.Message);
+                ContenedorFormulario.CssClass = "form-group has-error";
             }
         }
 

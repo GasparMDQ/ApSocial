@@ -12,13 +12,21 @@
                 </ul>
                 <div class="tab-content">
                   <div class="tab-pane fade in active" id="new-estado">
-                    <asp:TextBox ID="estadoMsg" runat="server" CssClass="form-control" placeholder="En que estas pensando ..."></asp:TextBox>
-                    <asp:FileUpload ID="estadoFoto" runat="server" />
-                    <asp:Button ID="nuevoEstado" runat="server" Text="Enviar" 
-                          CssClass="btn btn-primary btn-sm" onclick="nuevoEstado_Click" />
+                      <asp:Panel ID="ContenedorFormulario" CssClass="form-group" runat="server">
+                       <br />
+                        <p>
+                            <asp:TextBox ID="estadoMsg" runat="server" CssClass="form-control" placeholder="En que estas pensando ..."></asp:TextBox> <br />
+                            <asp:Button ID="nuevoEstado" runat="server" Text="Enviar" CssClass="btn btn-primary btn-sm pull-right" onclick="nuevoEstado_Click" />
+                        </p>
+                        <p>
+                            <asp:FileUpload ID="estadoFoto" runat="server" />
+                        </p>
+                      </asp:Panel>
                   </div>
                   <div class="tab-pane fade" id="new-album">
-                    <input class="form-control" placeholder="Escribe el titulo para tu nuevo album ..."/>
+                    <br />
+                        <input class="form-control" placeholder="Escribe el titulo para tu nuevo album ..."/>
+                    <br />
                   </div>
                 </div>
             Publicaciones

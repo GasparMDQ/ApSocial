@@ -17,6 +17,14 @@ namespace ApSocial.Entidades
         //public List<Grupos> grupos;
         //public List<Fotos> fotos_etiquetado;
         private string foto_usuario;
+        private string fullName;
+
+        public string FullName
+        {
+            get { return fullName; }
+            set { fullName = value; }
+        }
+
         private bool enabled;
 
         public Usuario(string apellido, string nombre, string email, string password, string residencia, DateTime fdn, string foto)
@@ -28,7 +36,7 @@ namespace ApSocial.Entidades
             this.Residencia = residencia;
             this.FechaDeNacimiento = fdn;
             this.Foto_usuario = foto;
-            
+
             this.enabled = true;
         }
 
@@ -62,13 +70,13 @@ namespace ApSocial.Entidades
         public string Nombre
         {
             get { return nombre; }
-            set { nombre = value; }
+            set { nombre = value; FullName = this.ToString(); }
         }
 
         public string Apellido
         {
             get { return apellido; }
-            set { apellido = value; }
+            set { apellido = value; FullName = this.ToString(); }
         }
 
         public string Email

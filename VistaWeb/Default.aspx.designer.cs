@@ -13,6 +13,15 @@ namespace VistaWeb {
     public partial class _Default {
         
         /// <summary>
+        /// Control ContenedorFormulario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel ContenedorFormulario;
+        
+        /// <summary>
         /// Control estadoMsg.
         /// </summary>
         /// <remarks>
@@ -22,15 +31,6 @@ namespace VistaWeb {
         protected global::System.Web.UI.WebControls.TextBox estadoMsg;
         
         /// <summary>
-        /// Control estadoFoto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload estadoFoto;
-        
-        /// <summary>
         /// Control nuevoEstado.
         /// </summary>
         /// <remarks>
@@ -38,6 +38,15 @@ namespace VistaWeb {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button nuevoEstado;
+        
+        /// <summary>
+        /// Control estadoFoto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload estadoFoto;
         
         /// <summary>
         /// Control AmigosList.
