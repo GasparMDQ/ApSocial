@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using ApSocial.Entidades;
 using ApSocial.DAO.BaseDeDatos;
+//using ApSocial.DAO.Lista;
 using ApSocial.Controladora.Etiquetas;
 
 namespace ApSocial.Controladora.Foto
@@ -43,7 +44,7 @@ namespace ApSocial.Controladora.Foto
             }
         }
 
-        public List<Fotos> buscarFotosPorAlbum(Album_fotos album)
+       public List<Fotos> buscarFotosPorAlbum(Album_fotos album)
         {
             try {
                 return daoFotos.searchByAlbum(album.Id);

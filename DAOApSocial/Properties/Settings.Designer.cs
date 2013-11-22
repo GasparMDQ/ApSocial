@@ -3,8 +3,8 @@
 //     Este código fue generado por una herramienta.
 //     Versión de runtime:4.0.30319.18052
 //
-//     Los cambios en este archivo podrían causar un comportamiento incorrecto y se perderán si
-//     se vuelve a generar el código.
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
 

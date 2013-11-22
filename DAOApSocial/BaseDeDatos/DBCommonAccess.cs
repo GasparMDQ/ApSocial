@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 
+
 namespace ApSocial.DAO.BaseDeDatos
 {
     public abstract class DBCommonAccess
@@ -21,6 +22,8 @@ namespace ApSocial.DAO.BaseDeDatos
                 throw new Exception("Conexion ya abierta");
             }
             cn.Open();
+
+  
         }
 
         /**

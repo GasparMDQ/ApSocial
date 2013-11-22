@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using ApSocial.Entidades;
 using ApSocial.DAO.Lista;
+//using ApSocial.DAO.BaseDeDatos;
 using ApSocial.Controladora.Amistades;
 using ApSocial.Controladora.Usuarios;
 
@@ -76,12 +77,11 @@ namespace ApSocial.Controladora.Publicaciones
                 foreach (Usuario usuario in usuariosAmigos)
                 {
                     //voy concatenando todas las publicaciones que son publicas de mis amigos
-                    publicaciones = publicaciones.Concat(getPublicacionesPublicasByIDUsuario(usuario.Id)).ToList();
-                    //publicaciones.AddRange(getPublicacionesPublicasByIDUsuario(usuario.Id));
+                    publicaciones.AddRange(getPublicacionesPublicasByIDUsuario(usuario.Id));
+                    
                 }
-                //le sumo mis publicaciones
-                /*publicaciones.AddRange(daoEstados.estadosByidUsuario(idUsuario));
-                publicaciones.AddRange(daoAlbum.albumByidUsuario(idUsuario));*/
+                publicaciones.AddRange(daoEstados.estadosByidUsuario(idUsuario));
+                
                 return publicaciones;
             }
             catch (Exception ex)
@@ -114,19 +114,36 @@ namespace ApSocial.Controladora.Publicaciones
         }
 
 
-        public List<Publicacion> verMuro(int usuarioId, int idlogueado)
+        public List<Publicacion> verMuro(int usuarioId)
         {
             List<Publicacion> listaPublicaciones = new List<Publicacion>();
             try
             {
+                crearObjetos();
                 listaPublicaciones = this.getPublicacionesPublicasDeMisAmigosYmias(usuarioId);
-                listaPublicaciones.AddRange(getPublicacionesPublicasByIDUsuario(usuarioId));
                 return listaPublicaciones;
 
             }
             catch (Exception ex) { 
                 throw  ex; 
             }
+        }
+
+        public void crearObjetos()
+        {
+            Album_fotos album = new Album_fotos("album1", 1);
+            Album_fotos album1 = new Album_fotos("album2", 2);
+            Album_fotos album2 = new Album_fotos("album3", 3);
+            Estados estado = new Estados("foto1", 1, "path");
+            Estados estado2 = new Estados("foto2", 2, "path");
+            Estados estado3 = new Estados("foto3", 3, "path");
+            daoAlbum.add(album);
+            daoAlbum.add(album1);
+            daoAlbum.add(album2);
+            daoEstados.add(estado);
+            daoEstados.add(estado2);
+            daoEstados.add(estado3);
+
         }
         
 
