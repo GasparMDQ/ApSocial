@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ApSocial.Entidades;
-using ApSocial.DAO.Lista;
-//using ApSocial.DAO.BaseDeDatos;
+//using ApSocial.DAO.Lista;
+using ApSocial.DAO.BaseDeDatos;
 using ApSocial.Controladora.Amistades;
 using ApSocial.Controladora.Usuarios;
 
@@ -17,7 +17,7 @@ namespace ApSocial.Controladora.Publicaciones
     {
         private AmistadesController controladoraAmistad = new AmistadesController();
         private UsuarioController controladoraUsuario = new UsuarioController();
-        private DAOUsuario_Grupo daoUsuarioGrupo = DAOUsuario_Grupo.Instance();
+        //private DAOUsuario_Grupo daoUsuarioGrupo = DAOUsuario_Grupo.Instance();
         DAOAlbum_fotos daoAlbum = DAOAlbum_fotos.Instance();
         DAOEstados daoEstados = DAOEstados.Instance();
 
@@ -27,8 +27,9 @@ namespace ApSocial.Controladora.Publicaciones
             //me da las publicaciones publicas de un usuario la uso luego recorriendo la lista de mis amigos 
             try
             {
-                List<Publicacion> todasLaspublicaciones = daoAlbum.albumByidUsuario(idUsuario);
-                todasLaspublicaciones.AddRange(daoEstados.estadosByidUsuario(idUsuario));
+                List<Publicacion> todasLaspublicaciones = new List<Publicacion>();
+                todasLaspublicaciones.AddRange(daoAlbum.searchByUserId(idUsuario));
+                todasLaspublicaciones.AddRange(daoEstados.searchByUserId(idUsuario));
                 List<Publicacion> publicacionesPublicas = new List<Publicacion>();
                 foreach (Publicacion publicacion in todasLaspublicaciones)
                 {
@@ -49,8 +50,9 @@ namespace ApSocial.Controladora.Publicaciones
             //devuelve las publicaciones privadas de un usuario la uso luego para filtrar cuales podre ver yo
             try
             {
-                List<Publicacion> todasLaspublicaciones = daoAlbum.albumByidUsuario(idUsuario);
-                todasLaspublicaciones.AddRange(daoEstados.estadosByidUsuario(idUsuario));
+                List<Publicacion> todasLaspublicaciones = new List<Publicacion>();
+                todasLaspublicaciones.AddRange(daoAlbum.searchByUserId(idUsuario));
+                todasLaspublicaciones.AddRange(daoEstados.searchByUserId(idUsuario));
                 List<Publicacion> publicacionesPrivadas = new List<Publicacion>();
                 foreach (Publicacion publicacion in todasLaspublicaciones)
                 {
@@ -80,7 +82,7 @@ namespace ApSocial.Controladora.Publicaciones
                     publicaciones.AddRange(getPublicacionesPublicasByIDUsuario(usuario.Id));
                     
                 }
-                publicaciones.AddRange(daoEstados.estadosByidUsuario(idUsuario));
+                publicaciones.AddRange(daoEstados.searchByUserId(idUsuario));
                 
                 return publicaciones;
             }
@@ -89,6 +91,8 @@ namespace ApSocial.Controladora.Publicaciones
                 throw ex;
             }
         }
+        /*
+         * Por el momento no hay publicaciones privadas (mensajes)
         public List<Publicacion> getPublicacionesPrivadasDeMisAmigos(int idUsuario)
         {
            // me devuelve todas las publicaciones privadas de mis amigos que puedo ver
@@ -112,43 +116,20 @@ namespace ApSocial.Controladora.Publicaciones
                 throw ex;
             }
         }
+        */
 
-
-        public List<Publicacion> verMuro(int usuarioId)
+        public List<Publicacion> verMuro (int usuarioId)
         {
             List<Publicacion> listaPublicaciones = new List<Publicacion>();
             try
             {
-                crearObjetos();
                 listaPublicaciones = this.getPublicacionesPublicasDeMisAmigosYmias(usuarioId);
                 return listaPublicaciones;
-
             }
             catch (Exception ex) { 
                 throw  ex; 
             }
         }
-
-        public void crearObjetos()
-        {
-            Album_fotos album = new Album_fotos("album1", 1);
-            Album_fotos album1 = new Album_fotos("album2", 2);
-            Album_fotos album2 = new Album_fotos("album3", 3);
-            Estados estado = new Estados("foto1", 1, "path");
-            Estados estado2 = new Estados("foto2", 2, "path");
-            Estados estado3 = new Estados("foto3", 3, "path");
-            daoAlbum.add(album);
-            daoAlbum.add(album1);
-            daoAlbum.add(album2);
-            daoEstados.add(estado);
-            daoEstados.add(estado2);
-            daoEstados.add(estado3);
-
-        }
-        
-
-
-
     }
 }
 

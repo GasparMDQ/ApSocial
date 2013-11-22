@@ -97,6 +97,17 @@ namespace ApSocial.DAO.BaseDeDatos
             }
         }
 
+        public List<Estados> searchByUserId(int id)
+        {
+            string cmdText = "SELECT id, fecha_creado, mensaje, publico, usuario_origen, foto FROM estados WHERE usuario_origen = " + Convert.ToString(id);
+            try {
+                List<Estados> estado = this.searchBy(cmdText);
+                return estado;
+            } catch (Exception ex) {
+                throw new Exception("No se encontraron estado del usuario id " + Convert.ToString(id), ex);
+            }
+        }
+
         private Estados searchOneBy(string cmdText)
         {
             try {
@@ -134,21 +145,12 @@ namespace ApSocial.DAO.BaseDeDatos
 
         private Estados getEstadoFromDataRow(DataRow dr)
         {
-            Estados estado;
-            if (dr["grupo"].ToString() != null) {
-                estado = new Estados(
-                    dr["mensaje"].ToString(),
-                    Convert.ToInt32(dr["usuario_origen"].ToString()),
-                    Convert.ToInt32(dr["grupo"].ToString()),
-                    dr["foto"].ToString()
-                 );
-            } else {
-                estado = new Estados(
-                    dr["mensaje"].ToString(),
-                    Convert.ToInt32(dr["usuario_origen"].ToString()),
-                    dr["foto"].ToString()
-                );
-            }
+            Estados estado = new Estados(
+                dr["mensaje"].ToString(),
+                Convert.ToInt32(dr["usuario_origen"].ToString()),
+                dr["foto"].ToString()
+            );
+
             //Seteo el ID del Estado
             estado.Id = (int)dr["id"];
             estado.Fecha_creado = (DateTime)dr["fecha_creado"];

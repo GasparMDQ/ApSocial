@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ApSocial.Controladora.Amistades;
 using ApSocial.Controladora.Estado;
+using ApSocial.Controladora.Publicaciones;
 using ApSocial.Entidades;
 
 namespace VistaWeb
@@ -14,17 +15,32 @@ namespace VistaWeb
     {
         private AmistadesController controladoraAmistad = new AmistadesController();
         private EstadoController controladoraEstado = new EstadoController();
+        private PublicacionController controladoraPublicacion = new PublicacionController();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             this.loadFriends();
+            this.loadStates();
         }
 
         public void loadFriends()
         {
             AmigosList.DataSource = null;
-            AmigosList.DataSource = this.controladoraAmistad.getAllFriendsFromUser( Convert.ToInt32(Session["usuarioLogueado"].ToString()));
+            AmigosList.DataSource = this.controladoraAmistad.getAllFriendsFromUser(Convert.ToInt32(Session["usuarioLogueado"].ToString()));
             this.AmigosList.DataBind();
+        }
+
+        public void loadStates()
+        {
+            List<Publicacion> publicaciones = controladoraPublicacion.verMuro(Convert.ToInt32(Session["usuarioLogueado"].ToString()));
+
+            Publicaciones.Text = "";
+
+            foreach (Publicacion publi in publicaciones) {
+                Publicaciones.Text += publi.Mensaje + "<br />";
+            }
+            
+
         }
 
         protected void nuevoEstado_Click(object sender, EventArgs e)
@@ -35,6 +51,7 @@ namespace VistaWeb
                 estadoMsg.Text = "";
                 estadoMsg.Attributes.Add("placeholder", "En que estas pensando ...");
                 ContenedorFormulario.CssClass = "form-group";
+                this.loadStates();
             } catch (Exception ex) {
                 // Informar a la vista el error de la excepcion.
                 estadoMsg.Attributes.Add("placeholder",ex.Message);

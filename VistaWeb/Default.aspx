@@ -29,7 +29,7 @@
                     <br />
                   </div>
                 </div>
-            Publicaciones
+            <asp:Literal ID="Publicaciones" runat="server"></asp:Literal>
         </div>
         <div class="col-sm-3 col-sm-offset-1">
             <div class="row">Lista de Amigos</div>

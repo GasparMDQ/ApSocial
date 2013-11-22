@@ -85,6 +85,17 @@ namespace ApSocial.DAO.BaseDeDatos
             }
         }
 
+        public List<Album_fotos> searchByUserId(int id)
+        {
+            string cmdText = "SELECT id, fecha_creado, mensaje, publico, usuario_origen FROM album_fotos WHERE usuario_origen = " + Convert.ToString(id);
+            try {
+                List<Album_fotos> album_fotos = this.searchBy(cmdText);
+                return album_fotos;
+            } catch (Exception ex) {
+                throw new Exception("No se encontraron albumes de fotos del usuario id " + Convert.ToString(id), ex);
+            }
+        }
+
         private Album_fotos searchOneBy(string cmdText)
         {
             try {
