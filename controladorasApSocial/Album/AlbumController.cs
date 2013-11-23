@@ -49,5 +49,14 @@ namespace ApSocial.Controladora.Album
                 throw new Exception("No se pudo eliminar el album con ID " + albumId, ex);
             }
         }
+        public List<Album_fotos> buscarPorUsuario(int idUsuario) {
+            try
+            {
+                return daoAlbum.searchByUserId(idUsuario);
+            }
+            catch (Exception ex){
+                throw ex;
+            }
+        }
     }
 }

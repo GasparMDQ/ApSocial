@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace VistaEscritorio
 {
-    public partial class visorFotos : Form
+    public partial class verAlbum : Form
     {
-        public visorFotos()
+        public verAlbum()
         {
             InitializeComponent();
         }

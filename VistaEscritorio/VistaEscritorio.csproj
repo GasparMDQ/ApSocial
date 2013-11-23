@@ -47,11 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="albumForm.cs">
+    <Compile Include="abAlbum.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="albumForm.Designer.cs">
-      <DependentUpon>albumForm.cs</DependentUpon>
+    <Compile Include="abAlbum.Designer.cs">
+      <DependentUpon>abAlbum.cs</DependentUpon>
     </Compile>
     <Compile Include="AmistadSolicitud.cs">
       <SubType>Form</SubType>
@@ -110,8 +110,14 @@
     <Compile Include="UserList.Designer.cs">
       <DependentUpon>UserList.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="albumForm.resx">
-      <DependentUpon>albumForm.cs</DependentUpon>
+    <Compile Include="verAlbum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="verAlbum.Designer.cs">
+      <DependentUpon>verAlbum.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="abAlbum.resx">
+      <DependentUpon>abAlbum.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AmistadSolicitud.resx">
       <DependentUpon>AmistadSolicitud.cs</DependentUpon>
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserList.resx">
       <DependentUpon>UserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="verAlbum.resx">
+      <DependentUpon>verAlbum.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

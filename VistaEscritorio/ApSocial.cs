@@ -100,7 +100,7 @@ namespace VistaEscritorio
 
         private void nuevoAlbumToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            albumForm unAlbum = new albumForm();
+            abAlbum unAlbum = new abAlbum();
             unAlbum.ShowDialog();
         }
 
