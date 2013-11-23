@@ -9,7 +9,7 @@ using ApSocial.Controladora.Usuarios;
 using ApSocial.DAO.BaseDeDatos;
 //using ApSocial.DAO.Lista;
 
-namespace ApSocial.Controladora.Grupos
+namespace ApSocial.Controladora.Grupo
 {
 
     public class GruposController

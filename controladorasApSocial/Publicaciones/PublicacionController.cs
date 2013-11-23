@@ -8,7 +8,7 @@ using ApSocial.Entidades;
 using ApSocial.DAO.BaseDeDatos;
 using ApSocial.Controladora.Amistades;
 using ApSocial.Controladora.Usuarios;
-using ApSocial.Controladora.Grupos;
+using ApSocial.Controladora.Grupo;
 
 namespace ApSocial.Controladora.Publicaciones
 {

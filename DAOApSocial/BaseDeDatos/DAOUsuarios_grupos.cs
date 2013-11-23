@@ -95,7 +95,7 @@ namespace ApSocial.DAO.BaseDeDatos
                 );
             return usuarioGrupo;
         }
-        bool isUserInGroup(int userID, int groupId)
+        public bool existeUsuarioEnGrupo(int userID, int groupId)
         {
             string cmdText = "SELECT idGrupo, idUsuario FROM usuarios_grupos WHERE idUsuario = \'" + userID + "\' AND idGrupo = \'" + groupId + "\'";
             Usuario_Grupo rta = null;
@@ -130,6 +130,44 @@ namespace ApSocial.DAO.BaseDeDatos
             catch (Exception ex)
             {
                 throw new Exception("No se pudo ejecutar la consulta (DAO)", ex);
+            }
+        }
+        public List<Usuario_Grupo> searchByUsuario(int userId)
+        {
+            string cmdText = "SELECT idGrupo, idUsuario FROM usuarios_grupos WHERE idUsuario = \'" + userId + "\'";
+            try
+            {
+                List<Usuario_Grupo> lista = this.searchBy(cmdText);
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se encontraron grupos para el usuario con ID " + userId, ex);
+            }
+        }
+        public List<Usuario_Grupo> searchAllBygrupo(int grupoID)
+        {
+            string cmdText = "SELECT idGrupo, idUsuario FROM usuarios_grupos WHERE idGrupo = \'" + grupoID + "\'";
+            try
+            {
+                List<Usuario_Grupo> lista = this.searchBy(cmdText);
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se encontraron usuarios-grupos para el grupo con ID " + grupoID, ex);
+            }
+        }
+        public Usuario_Grupo searchByUserAndGroup(int grupoID, int userId)
+        {
+            string cmdText = "SELECT idGrupo, idUsuario FROM usuarios_grupos WHERE idUsuario = \'" + userId + "\' AND idGrupo = \'" + grupoID + "\'";
+            try
+            {
+                return this.searchOneBy(cmdText);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se encontro UsuarioGrupo para el usuario con ID " + userId + " grupo con ID " + grupoID, ex);
             }
         }
  
