@@ -28,20 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.imagen = new System.Windows.Forms.PictureBox();
             this.listPublicaciones = new System.Windows.Forms.ListBox();
             this.listComentarios = new System.Windows.Forms.ListBox();
             this.txtDetalle = new System.Windows.Forms.TextBox();
+            this.imagen = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.imagen)).BeginInit();
             this.SuspendLayout();
-            // 
-            // imagen
-            // 
-            this.imagen.Location = new System.Drawing.Point(295, 18);
-            this.imagen.Name = "imagen";
-            this.imagen.Size = new System.Drawing.Size(201, 132);
-            this.imagen.TabIndex = 1;
-            this.imagen.TabStop = false;
             // 
             // listPublicaciones
             // 
@@ -71,6 +63,14 @@
             this.txtDetalle.Size = new System.Drawing.Size(435, 119);
             this.txtDetalle.TabIndex = 4;
             // 
+            // imagen
+            // 
+            this.imagen.Location = new System.Drawing.Point(295, 18);
+            this.imagen.Name = "imagen";
+            this.imagen.Size = new System.Drawing.Size(201, 132);
+            this.imagen.TabIndex = 1;
+            this.imagen.TabStop = false;
+            // 
             // Muro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -90,9 +90,9 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox imagen;
         private System.Windows.Forms.ListBox listPublicaciones;
         private System.Windows.Forms.ListBox listComentarios;
         private System.Windows.Forms.TextBox txtDetalle;
+        private System.Windows.Forms.PictureBox imagen;
     }
 }

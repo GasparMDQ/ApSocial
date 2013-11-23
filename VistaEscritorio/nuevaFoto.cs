@@ -40,13 +40,13 @@ namespace VistaEscritorio
 
         public void cargarAmigos(ListBox listBox) {
             List<Usuario> lista = new List<Usuario>();
-            Usuario usuario = new Usuario("garcia", "juan", "juang@gmail.com","mdp","123456",DateTime.Today,"sdsds");
+            /*Usuario usuario = new Usuario("garcia", "juan", "juang@gmail.com","mdp","123456",DateTime.Today,"sdsds");
             Usuario usuario1 = new Usuario("lopez", "cristian", "lcristian@gmail.com", "mdp", "123456", DateTime.Today, "sdsds");
             Usuario usuario2 = new Usuario("juarez", "juan", "juajuarezg@gmail.com", "mdp", "123456", DateTime.Today, "sdsds");
             lista.Add(usuario);
             lista.Add(usuario1);
-            lista.Add(usuario2);
-           //lista = controladoraAmistad.getAllFriendsFromUser(Session.IdUsuarioLogueado);
+            lista.Add(usuario2);*/
+            lista = controladoraAmistad.getAllFriendsFromUser(Session.IdUsuarioLogueado);
             listBox.DataSource = lista;
         }
 
