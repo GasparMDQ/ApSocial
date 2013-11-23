@@ -5,12 +5,16 @@ using System.Text;
 using ApSocial.Entidades;
 //using ApSocial.DAO.Lista;
 using ApSocial.DAO.BaseDeDatos;
+using ApSocial.Controladora.Usuarios;
+using ApSocial.Controladora.Amistades;
 
 namespace ApSocial.Controladora.Estado
 {
     public class EstadoController
     {
-        DAOEstados daoEstados = DAOEstados.Instance();
+        DAOEstados dataEstados = DAOEstados.Instance();
+        UsuarioController usuariosController = new UsuarioController();
+        AmistadesController amistadesController = new AmistadesController();
 
         public void nuevoEstado(int idUsuario, string mensaje, string url)
         {
@@ -20,11 +24,82 @@ namespace ApSocial.Controladora.Estado
                     throw new Exception("Debe ingresar un mensaje");
                 }
                 estado = new Estados(mensaje, idUsuario, url);
-                daoEstados.add(estado);
+                dataEstados.add(estado);
             } catch (Exception ex) {
                 throw ex;
             }
 
+        }
+
+        public List<Estados> getEstadosForWallByUser(int userId)
+        {
+            List<Estados> estados = new List<Estados>();
+            List<Solicitud_Amistad> amistades = new List<Solicitud_Amistad>();
+
+            try {
+                estados.AddRange(getEstadosByUser(userId));
+            } catch (Exception ex) {
+                throw new Exception("No se pudieron obtener los estados del usuario ID: " +userId, ex);
+            }
+
+            try {
+                foreach (Usuario usuario in amistadesController.getAllFriendsFromUser(userId)) {
+                    estados.AddRange(getEstadosByUser(usuario.Id, true));
+                }
+            } catch (Exception ex) {
+                throw new Exception("No se pudieron obtener los estados publicos de las amistades del usuario ID: " +userId, ex);
+            }
+            return estados.OrderByDescending(p => p.Fecha_creado).ToList();
+        }
+
+        /**
+         * Devuelve los estados PUBLICOS o PRIVADOS del usuario 
+         */
+        public List<Estados> getEstadosByUser(int userId, bool isPublico)
+        {
+            List<Estados> estados = new List<Estados>();
+            try {
+                foreach (Estados estado in dataEstados.searchByUserId(userId).OrderByDescending(p => p.Fecha_creado).ToList()) {
+                    if (estado.Publico == isPublico) {
+                        estados.Add(estado);
+                    }
+                }
+                return this.stringifyUserList(estados);
+            } catch (Exception ex) {
+                throw new Exception("No se pudieron recuperar los estados del usuario ID " + userId, ex);
+            }
+        }
+
+        /**
+         * Devuelve TODOS los estados del usuario
+         */
+        public List<Estados> getEstadosByUser(int userId)
+        {
+            try {
+                return this.stringifyUserList(dataEstados.searchByUserId(userId).OrderByDescending(p => p.Fecha_creado).ToList());
+            } catch (Exception ex) {
+                throw new Exception("No se pudieron recuperar los estados del usuario ID " + userId, ex);
+            }
+        }
+
+
+        private List<Estados> stringifyUserList(List<Estados> lista)
+        {
+            List<Estados> estados = new List<Estados>();
+            foreach (Estados pub in lista) {
+                estados.Add(this.stringifyUser(pub));
+            }
+            return estados;
+        }
+
+        private Estados stringifyUser(Estados estado)
+        {
+            try {
+                estado.Usuario = usuariosController.getUsuarioById(estado.Usuario_origen).ToString();
+                return estado;
+            } catch (Exception ex) {
+                throw new Exception("No se pudo obtener el string del usuario para el estado ID: " + estado.Id, ex);
+            }
         }
     }
 

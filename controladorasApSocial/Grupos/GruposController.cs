@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using ApSocial.Entidades;
 using ApSocial.Controladora.Usuarios;
 
@@ -13,8 +14,18 @@ namespace ApSocial.Controladora.Grupos
 
     public class GruposController
     {
-        DAOSolicitud_Amistad dataGrupos = DAOSolicitud_Amistad.Instance();
+        DAOGrupos dataGrupos = DAOGrupos.Instance();
         private UsuarioController controladoraUsuario = new UsuarioController();
+
+        public bool perteneceAlGrupo(int userId, int groupId)
+        {
+            try {
+                //return controladoraGrupoUsuario.isUserInGroup(userId, groupId);
+                return true;
+            } catch (Exception ex) {
+                throw new Exception("No se pudo verificar si el usuario ID "+userId +" pertence al grupo ID "+groupId, ex);
+            }
+        }
 
     }
 }

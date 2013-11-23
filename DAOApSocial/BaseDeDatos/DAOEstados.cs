@@ -37,13 +37,13 @@ namespace ApSocial.DAO.BaseDeDatos
             Dictionary<string, Object> parametros = new Dictionary<string, Object>();
 
             if (estado.Foto_estado == null) {
-                cmdText = "INSERT INTO estados (fecha_creado, mensaje, publico, usuario_origen) VALUES (@Fecha,@Mensaje,@Publico,@Usuario)";
+                cmdText = "INSERT INTO estados (fecha_creado, mensaje, publico, usuario_origen) OUTPUT INSERTED.ID VALUES (@Fecha,@Mensaje,@Publico,@Usuario)";
                 parametros.Add("@Fecha", estado.Fecha_creado);
                 parametros.Add("@Mensaje", estado.Mensaje);
                 parametros.Add("@Publico", estado.Publico);
                 parametros.Add("@Usuario", estado.Usuario_origen);
             } else {
-                cmdText = "INSERT INTO estados (fecha_creado, mensaje, publico, usuario_origen, foto) VALUES (@Fecha,@Mensaje,@Publico,@Usuario,@Foto)";
+                cmdText = "INSERT INTO estados (fecha_creado, mensaje, publico, usuario_origen, foto) OUTPUT INSERTED.ID VALUES (@Fecha,@Mensaje,@Publico,@Usuario,@Foto)";
                 parametros.Add("@Fecha", estado.Fecha_creado);
                 parametros.Add("@Mensaje", estado.Mensaje);
                 parametros.Add("@Publico", estado.Publico);
@@ -51,7 +51,7 @@ namespace ApSocial.DAO.BaseDeDatos
                 parametros.Add("@Foto", estado.Foto_estado);
             }
             try {
-                this.setData(cmdText, parametros);
+                int resultado = this.setData(cmdText, parametros, true);
             } catch (Exception ex) {
                 throw new Exception("No se pudo insertar el estado en la base de datos", ex);
             }

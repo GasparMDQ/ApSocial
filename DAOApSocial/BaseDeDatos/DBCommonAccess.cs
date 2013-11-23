@@ -10,7 +10,6 @@ namespace ApSocial.DAO.BaseDeDatos
 {
     public abstract class DBCommonAccess
     {
-        //@todo Verificar que la DB con sus tablas exista. Ejecutar SCRIPTs correspondientes
         SqlConnection cn = new SqlConnection(ApSocial.DAO.Properties.Settings.Default.AplicacionSocialConnectionString);
 
         /**
@@ -22,8 +21,6 @@ namespace ApSocial.DAO.BaseDeDatos
                 throw new Exception("Conexion ya abierta");
             }
             cn.Open();
-
-  
         }
 
         /**
@@ -77,22 +74,54 @@ namespace ApSocial.DAO.BaseDeDatos
             return dt;
         }
 
-        public void setData(string cmdText, Dictionary<string, Object> listaParametros)
+        /**
+         * Si se pasa TRUE el tercer parametro, la QUERY debe ser del tipo INSERT y con la cadena OUTPUD INSERTED.ID en ella
+         * De esta manera, se devolvera el ID del registro insertado.
+         * En caso de pasar FALSE el tercer parametro, el comportamiento es el mismo que si se omitiera
+         */
+        public int setData(string cmdText, Dictionary<string, Object> listaParametros, bool isNew)
         {
+            int res;
             using (SqlCommand cmd = new SqlCommand(cmdText, cn)) {
                 foreach (KeyValuePair<string, Object> parametro in listaParametros) {
                     cmd.Parameters.AddWithValue(parametro.Key, parametro.Value);
                 }
-
                 Conectar();
                 try {
-                    int res = cmd.ExecuteNonQuery();
+                    if (isNew) {
+                        res = (int)cmd.ExecuteScalar();
+                    } else {
+                        res = cmd.ExecuteNonQuery();
+                    }
                 } catch (Exception ex) {
                     throw new Exception("No se pudo insertar el dato", ex);
                 } finally {
                     Desconectar();
                 }
             }
+            return res;
+        }
+
+        /**
+         * Se devuelve la cantidad de filas afectadas por la consulta
+         */
+        public int setData(string cmdText, Dictionary<string, Object> listaParametros)
+        {
+            int res;
+            using (SqlCommand cmd = new SqlCommand(cmdText, cn)) {
+                foreach (KeyValuePair<string, Object> parametro in listaParametros) {
+                    cmd.Parameters.AddWithValue(parametro.Key, parametro.Value);
+                }
+                Conectar();
+                try {
+                    res = cmd.ExecuteNonQuery();
+                } catch (Exception ex) {
+                    throw new Exception("No se pudo insertar el dato", ex);
+                } finally {
+                    Desconectar();
+                }
+            }
+            return res;
         }
 
     }

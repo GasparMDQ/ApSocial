@@ -33,7 +33,7 @@ namespace ApSocial.DAO.BaseDeDatos
 
         public void add(Fotos foto)
         {
-            string cmdText = "INSERT INTO fotos (url, album_id) VALUES (@Url,@AlbumId)";
+            string cmdText = "INSERT INTO fotos (url, album_id) OUTPUT INSERTED.ID VALUES (@Url,@AlbumId)";
             Dictionary<string, Object> parametros = new Dictionary<string, Object>();
             parametros.Add("@Url", foto.Url);
             parametros.Add("@AlbumId", foto.AlbumId);

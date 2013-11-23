@@ -12,6 +12,13 @@ namespace ApSocial.Entidades
         private string mensaje;
         private bool publico;
         private int usuario_origen;
+        private string usuario;
+
+        public string Usuario
+        {
+            get { return usuario; }
+            set { usuario = value; }
+        }
 
         public int Usuario_origen
         {

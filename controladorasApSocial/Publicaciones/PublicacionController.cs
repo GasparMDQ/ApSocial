@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using ApSocial.Entidades;
 //using ApSocial.DAO.Lista;
 using ApSocial.DAO.BaseDeDatos;
 using ApSocial.Controladora.Amistades;
 using ApSocial.Controladora.Usuarios;
+using ApSocial.Controladora.Grupos;
 
 namespace ApSocial.Controladora.Publicaciones
 {
@@ -17,7 +19,8 @@ namespace ApSocial.Controladora.Publicaciones
     {
         private AmistadesController controladoraAmistad = new AmistadesController();
         private UsuarioController controladoraUsuario = new UsuarioController();
-        //private DAOUsuario_Grupo daoUsuarioGrupo = DAOUsuario_Grupo.Instance();
+        private GruposController controladoraGrupos = new GruposController();
+
         DAOAlbum_fotos daoAlbum = DAOAlbum_fotos.Instance();
         DAOEstados daoEstados = DAOEstados.Instance();
 
@@ -91,8 +94,7 @@ namespace ApSocial.Controladora.Publicaciones
                 throw ex;
             }
         }
-        /*
-         * Por el momento no hay publicaciones privadas (mensajes)
+
         public List<Publicacion> getPublicacionesPrivadasDeMisAmigos(int idUsuario)
         {
            // me devuelve todas las publicaciones privadas de mis amigos que puedo ver
@@ -105,7 +107,7 @@ namespace ApSocial.Controladora.Publicaciones
                 {
                     publicacionesPrivadas = this.getPublicacionesPrivadasByIdUsuario(usuario.Id);
                     foreach (Publicacion publicacion in publicacionesPrivadas) { 
-                        if( daoUsuarioGrupo.perteneceAlGrupo(idUsuario, publicacion.Grupo_destino)){
+                        if( controladoraGrupos.perteneceAlGrupo(idUsuario, publicacion.Grupo_destino)){
                             publicacionesFiltradas.Add(publicacion);
                         }
                     }
@@ -116,19 +118,15 @@ namespace ApSocial.Controladora.Publicaciones
                 throw ex;
             }
         }
-        */
 
         public List<Publicacion> verMuro (int usuarioId)
         {
             List<Publicacion> listaPublicaciones = new List<Publicacion>();
-            try
-            {
+            try {
                 listaPublicaciones = this.getPublicacionesPublicasDeMisAmigosYmias(usuarioId).OrderByDescending(p => p.Fecha_creado).ToList();
-                
                 return listaPublicaciones;
-            }
-            catch (Exception ex) { 
-                throw  ex; 
+            } catch (Exception ex) { 
+                throw  ex;
             }
         }
     }

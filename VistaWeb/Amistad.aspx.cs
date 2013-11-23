@@ -20,7 +20,13 @@ namespace VistaWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             this.usuario = Convert.ToInt32(Session["usuarioLogueado"].ToString());
+            this.refreshData();
+        }
+
+        private void refreshData()
+        {
             this.setPendingRequests();
+            this.FriendList.RefreshData();
         }
 
         private void setPendingRequests()
@@ -40,37 +46,53 @@ namespace VistaWeb
         {
             try {
                 controladoraAmistades.solicitarAmistad(this.usuario, emailSolicitud.Text);
-                this.resultadoSolicitud.Text = "<div class=\"alert alert-success alert-dismissable\">";
-                this.resultadoSolicitud.Text += "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
-                this.resultadoSolicitud.Text += "La solicitud fue enviada correctamente a <strong>" + emailSolicitud.Text + "</strong></div>";
+                this.showSuccess("La solicitud fue enviada correctamente a <strong>" + emailSolicitud.Text + "</strong>");
             } catch (Exception ex) {
-                this.resultadoSolicitud.Text = "<div class=\"alert alert-danger alert-dismissable\">";
-                this.resultadoSolicitud.Text += "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
-                this.resultadoSolicitud.Text += "<strong>Error!</strong> " + ex.Message + "</div>";
-
+                this.showError(ex.Message);
             }
         }
 
         protected void AceptarAmistad_Click(object sender, EventArgs e)
         {
+
             try {
-                controladoraAmistades.aceptarAmistad(this.usuario, Convert.ToInt32(this.idSolicitante.Value));
+                Usuario solictante = controladoraUsuario.getUsuarioById(Convert.ToInt32(this.idSolicitante.Value));
+                controladoraAmistades.aceptarAmistad(this.usuario, solictante.Id);
                 // Indicar con una alerta que se acepto a fulano de tal
-                setPendingRequests();
+                this.showSuccess("Se acepto la solicitud de <strong>" + solictante.FullName + "</strong>");
+                this.refreshData();
+                this.idSolicitante.Value = "0";
             } catch (Exception ex) {
-                throw ex;
+                this.showError(ex.Message);
             }
         }
 
         protected void RechazarAmistad_Click(object sender, EventArgs e)
         {
             try {
-                controladoraAmistades.rechazarAmistad(this.usuario, Convert.ToInt32(this.idSolicitante.Value));
+                Usuario solictante = controladoraUsuario.getUsuarioById(Convert.ToInt32(this.idSolicitante.Value));
+                controladoraAmistades.rechazarAmistad(this.usuario, solictante.Id);
                 // Indicar con una alerta que se rechazo a fulano de tal
-                setPendingRequests();
+                this.showSuccess("Se rechazó la solicitud de <strong>" + solictante.FullName + "</strong>");
+                this.refreshData();
+                this.idSolicitante.Value = "0";
             } catch (Exception ex) {
-                throw ex;
+                this.showError(ex.Message);
             }
+        }
+
+        private void showSuccess(string msg)
+        {
+            this.resultadoSolicitud.Text = "<div class=\"alert alert-success alert-dismissable\">";
+            this.resultadoSolicitud.Text += "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
+            this.resultadoSolicitud.Text += msg + "</div>";
+        }
+
+        private void showError(string msg)
+        {
+            this.resultadoSolicitud.Text = "<div class=\"alert alert-danger alert-dismissable\">";
+            this.resultadoSolicitud.Text += "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
+            this.resultadoSolicitud.Text += "<strong>Error!</strong> " + msg + "</div>";
         }
 
     }

@@ -21,29 +21,20 @@ namespace VistaWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.loadFriends();
-            this.loadStates();
+            this.refreshData();
         }
 
-        public void loadFriends()
+        private void refreshData()
         {
-            AmigosList.DataSource = null;
-            AmigosList.DataSource = this.controladoraAmistad.getAllFriendsFromUser(Convert.ToInt32(Session["usuarioLogueado"].ToString()));
-            this.AmigosList.DataBind();
+            this.loadStates();
+            this.FriendList.RefreshData();
         }
 
         public void loadStates()
         {
-            List<Publicacion> publicaciones = controladoraPublicacion.verMuro(Convert.ToInt32(Session["usuarioLogueado"].ToString()));
-
-            Publicaciones.Text = "";
-
-            foreach (Publicacion publi in publicaciones) {
-                Publicaciones.Text += controladoraUsuario.getUsuarioById(publi.Usuario_origen).FullName +
-                    ": "+ publi.Mensaje + " | " + publi.Fecha_creado.ToString() + "<br />";
-            }
-            
-
+            List<Estados> estados = controladoraEstado.getEstadosForWallByUser(Convert.ToInt32(Session["usuarioLogueado"].ToString()));
+            Publicaciones.DataSource = estados;
+            Publicaciones.DataBind();
         }
 
         protected void nuevoEstado_Click(object sender, EventArgs e)
@@ -54,7 +45,7 @@ namespace VistaWeb
                 estadoMsg.Text = "";
                 estadoMsg.Attributes.Add("placeholder", "En que estas pensando ...");
                 ContenedorFormulario.CssClass = "form-group";
-                this.loadStates();
+                this.refreshData();
             } catch (Exception ex) {
                 // Informar a la vista el error de la excepcion.
                 estadoMsg.Attributes.Add("placeholder",ex.Message);

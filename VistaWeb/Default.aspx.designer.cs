@@ -55,15 +55,15 @@ namespace VistaWeb {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Publicaciones;
+        protected global::System.Web.UI.WebControls.Repeater Publicaciones;
         
         /// <summary>
-        /// Control AmigosList.
+        /// Control FriendList.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox AmigosList;
+        protected global::VistaWeb.FriendList FriendList;
     }
 }
