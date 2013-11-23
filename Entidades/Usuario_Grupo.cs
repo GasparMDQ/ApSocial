@@ -7,7 +7,6 @@ namespace ApSocial.Entidades
 {
     public class Usuario_Grupo
     {
-        int id;
         int idUsuario;
         int idGrupo;
 
@@ -22,10 +21,9 @@ namespace ApSocial.Entidades
             get { return idUsuario; }
             set { idUsuario = value; }
         }
-        public int Id
-        {
-            get { return id; }
-            set { id = value; }
+        public Usuario_Grupo(int idUsuario, int idGrupo) {
+            this.IdUsuario = IdUsuario;
+            this.idGrupo = idGrupo;
         }
 
     }

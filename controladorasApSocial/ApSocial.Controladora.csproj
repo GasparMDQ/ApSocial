@@ -49,6 +49,7 @@
     <Compile Include="Grupos\GruposController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publicaciones\PublicacionController.cs" />
+    <Compile Include="UsuarioGrupos\Usuario-GrupoController.cs" />
     <Compile Include="Usuarios\UsuarioController.cs" />
   </ItemGroup>
   <ItemGroup>

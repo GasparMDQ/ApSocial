@@ -101,6 +101,7 @@ namespace VistaEscritorio
             {
                 Album_fotos album = (Album_fotos)comboMisAlbums.SelectedItem;
                 controladoraAlbum.eliminarAlbum(album.Id);
+                comboMisAlbums.Text = "";
                 cargarAlbums(comboMisAlbums);
             }
             catch (Exception ex) {

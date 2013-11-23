@@ -48,6 +48,7 @@
     <Compile Include="BaseDeDatos\DAOFotos.cs" />
     <Compile Include="BaseDeDatos\DAOGrupos.cs" />
     <Compile Include="BaseDeDatos\DAOSolicitud_Amistad.cs" />
+    <Compile Include="BaseDeDatos\DAOUsuarios_grupos.cs" />
     <Compile Include="BaseDeDatos\DBCommonAccess.cs" />
     <Compile Include="BaseDeDatos\DAOUsuario.cs" />
     <Compile Include="BaseDeDatos\DAOAlbum_fotos.cs" />

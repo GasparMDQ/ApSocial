@@ -41,17 +41,11 @@ namespace ApSocial.DAO.Lista
 
         public Usuario_Grupo searchById(int id)
         {
-            foreach (Usuario_Grupo usuarioGrupo in this.listaUsuarioGrupo)
-            {
-                if (usuarioGrupo.Id == id) { return usuarioGrupo; }
-            }
-
-            throw new Exception("Usuario y grupos no encontrados con ese id");
+            throw new Exception("Usuario y grupos no se pueden buscar con  id");
         }
 
         public void add(Usuario_Grupo usuarioGrupo)
         {
-            usuarioGrupo.Id= getId();
             listaUsuarioGrupo.Add(usuarioGrupo);
 
         }
@@ -59,7 +53,7 @@ namespace ApSocial.DAO.Lista
         public void remove(Usuario_Grupo usuarioGrupo) 
         {
             try {
-                this.searchById(usuarioGrupo.Id);
+                this.searchByidUsuarioIdGrupos(usuarioGrupo.IdUsuario, usuarioGrupo.IdGrupo);
             }catch(Exception ex){ throw ex; }
             listaUsuarioGrupo.Remove(usuarioGrupo);
         }
@@ -68,7 +62,7 @@ namespace ApSocial.DAO.Lista
         {
             try
             {
-                Usuario_Grupo usuarioGrupoGrabado = searchById(usuarioGrupoModificado.Id);
+                Usuario_Grupo usuarioGrupoGrabado = searchByidUsuarioIdGrupos(usuarioGrupoModificado.IdUsuario, usuarioGrupoModificado.IdGrupo);
                 listaUsuarioGrupo.Remove(usuarioGrupoGrabado);
                 listaUsuarioGrupo.Add(usuarioGrupoModificado);
             }
@@ -84,6 +78,14 @@ namespace ApSocial.DAO.Lista
                 if (usuarioGrupo.IdUsuario == idUsuario && usuarioGrupo.IdGrupo==idGrupo) { return true; }
             }
             throw new Exception("El usuario no pertenece al grupo ");
+        }
+        public Usuario_Grupo searchByidUsuarioIdGrupos(int idUsuario, int idGrupo) {
+            foreach (Usuario_Grupo usuarioGrupo in listaUsuarioGrupo) {
+                if (usuarioGrupo.IdGrupo == idGrupo && usuarioGrupo.IdUsuario == idUsuario) {
+                    return usuarioGrupo;
+                }
+            }
+            throw new Exception("no existe ese usuario en ese grupo");
         }
     }
 }

@@ -264,5 +264,12 @@ GO
 
 ALTER TABLE [dbo].[grupos] ADD  CONSTRAINT [DF_grupos_sistema]  DEFAULT ((1)) FOR [sistema]
 GO
+create table usuarios_grupos(
+	idUsuario int foreign key references usuarios(id),
+	idGrupo int foreign key references grupos(id),
+	primary key (idusuario,idgrupo)
+	
+)
+
 
 
