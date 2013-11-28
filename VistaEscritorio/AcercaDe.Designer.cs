@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.ApSocial = new System.Windows.Forms.Label();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,26 +45,7 @@
             this.ApSocial.Size = new System.Drawing.Size(129, 32);
             this.ApSocial.TabIndex = 0;
             this.ApSocial.Text = "ApSocial";
-            // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(403, 233);
-            this.shapeContainer1.TabIndex = 1;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // lineShape1
-            // 
-            this.lineShape1.BorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = 50;
-            this.lineShape1.X2 = 340;
-            this.lineShape1.Y1 = 81;
-            this.lineShape1.Y2 = 81;
+
             // 
             // label1
             // 
@@ -129,7 +108,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ApSocial);
-            this.Controls.Add(this.shapeContainer1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "acercaDe";
@@ -142,8 +120,6 @@
         #endregion
 
         private System.Windows.Forms.Label ApSocial;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
