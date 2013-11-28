@@ -16,15 +16,21 @@ namespace VistaEscritorio
     {
         private UsuarioController controladora = new UsuarioController();
         private PublicacionController controladoraPublicaciones = new PublicacionController();
-
         public ApSocial()
         {
             InitializeComponent();
+            habilitarMenu();
+        }
+        public void habilitarMenu() {
+            if (Session.IdUsuarioLogueado > 0) {
+                amistadesToolStripMenuItem.Enabled = true;
+                publicacionesToolStripMenuItem.Enabled = true;
+            }
         }
 
         private void ingresarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LogIn formularioIngreso = new LogIn();
+            LogIn formularioIngreso = new LogIn(menuStrip);
             formularioIngreso.ShowDialog();
         }
 
@@ -108,6 +114,22 @@ namespace VistaEscritorio
         {
             NuevoEstado formNuevoEstado = new NuevoEstado();
             formNuevoEstado.ShowDialog();
+        }
+
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            acercaDe acercade = new acercaDe();
+            acercade.ShowDialog();
+        }
+        public void deshabilitarMenu(MenuStrip m) {
+            m.Items[2].Enabled = false;
+            m.Items[3].Enabled = false;  
+        }
+
+        private void desloguearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Session.IdUsuarioLogueado=0;
+            deshabilitarMenu(menuStrip);
         }
 
 

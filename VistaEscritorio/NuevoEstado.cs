@@ -19,19 +19,22 @@ namespace VistaEscritorio
             InitializeComponent();
         }
 
-        private void cargarFotoBTN_Click(object sender, EventArgs e)
+
+        private void guardarEstadoBTN_Click(object sender, EventArgs e)
         {
             try
             {
-                if (urlFoto != null)
+                if (mensajeTXT.Text == "" && urlFoto == null)
+                {
+                    MessageBox.Show("estado sin datos ingrese foto o mensaje a compartir");
+                }
+                else
                 {
                     controladoraEstados.nuevoEstado(Session.IdUsuarioLogueado, mensajeTXT.Text, urlFoto);
                 }
-                else {
-                    controladoraEstados.nuevoEstado(Session.IdUsuarioLogueado, mensajeTXT.Text, "");
-                }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show("no se pudo cargar el estado", ex.Message);
             }
         }

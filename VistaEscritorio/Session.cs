@@ -14,6 +14,8 @@ namespace VistaEscritorio
             get { return idUsuarioLogueado; }
             set { idUsuarioLogueado = value; }
         }
+        
+
 
     }
 }

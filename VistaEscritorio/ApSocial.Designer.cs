@@ -54,6 +54,8 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +66,8 @@
             this.salirToolStripMenuItem,
             this.menu2ToolStripMenuItem,
             this.amistadesToolStripMenuItem,
-            this.publicacionesToolStripMenuItem});
+            this.publicacionesToolStripMenuItem,
+            this.ayudaToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
@@ -95,6 +98,7 @@
             this.desloguearToolStripMenuItem.Name = "desloguearToolStripMenuItem";
             this.desloguearToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
             this.desloguearToolStripMenuItem.Text = "Desloguear";
+            this.desloguearToolStripMenuItem.Click += new System.EventHandler(this.desloguearToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -155,6 +159,7 @@
             this.verListaDeAmigosToolStripMenuItem,
             this.solictarNuevaAmistadToolStripMenuItem,
             this.responderSolicitudesDeAmistadToolStripMenuItem});
+            this.amistadesToolStripMenuItem.Enabled = false;
             this.amistadesToolStripMenuItem.Name = "amistadesToolStripMenuItem";
             this.amistadesToolStripMenuItem.Size = new System.Drawing.Size(90, 24);
             this.amistadesToolStripMenuItem.Text = "Amistades";
@@ -186,6 +191,7 @@
             this.verMuroToolStripMenuItem,
             this.nuevaPublicaciónToolStripMenuItem,
             this.mensajesPrivadosToolStripMenuItem});
+            this.publicacionesToolStripMenuItem.Enabled = false;
             this.publicacionesToolStripMenuItem.Name = "publicacionesToolStripMenuItem";
             this.publicacionesToolStripMenuItem.Size = new System.Drawing.Size(111, 24);
             this.publicacionesToolStripMenuItem.Text = "Publicaciones";
@@ -258,6 +264,21 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(54, 20);
             this.toolStripStatusLabel.Text = "Estado";
             // 
+            // ayudaToolStripMenuItem
+            // 
+            this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.acercaDeToolStripMenuItem});
+            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
+            this.ayudaToolStripMenuItem.Text = "Ayuda";
+            // 
+            // acercaDeToolStripMenuItem
+            // 
+            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(207, 24);
+            this.acercaDeToolStripMenuItem.Text = "Acerca de ApSocial";
+            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
+            // 
             // ApSocial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -267,7 +288,7 @@
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ApSocial";
             this.Text = "ApSocial";
             this.Activated += new System.EventHandler(this.ApSocial_Activated);
@@ -281,8 +302,6 @@
         }
         #endregion
 
-
-        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.ToolTip toolTip;
@@ -296,11 +315,9 @@
         private System.Windows.Forms.ToolStripMenuItem nuevoUsuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem desloguearToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem amistadesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verListaDeAmigosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem solictarNuevaAmistadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem responderSolicitudesDeAmistadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem publicacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verMuroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevaPublicaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mensajesPrivadosToolStripMenuItem;
@@ -308,6 +325,11 @@
         private System.Windows.Forms.ToolStripMenuItem verMensajesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoAlbumToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoEstadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
+        public System.Windows.Forms.MenuStrip menuStrip;
+        public System.Windows.Forms.ToolStripMenuItem amistadesToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem publicacionesToolStripMenuItem;
     }
 }
 
