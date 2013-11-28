@@ -7,8 +7,8 @@ namespace ApSocial.Entidades
     {
 
         private string foto_estado;
-
         private List<Comentarios> comentarios;
+        private int grupo_id;
 
         public List<Comentarios> Comentarios
         {
@@ -21,7 +21,7 @@ namespace ApSocial.Entidades
             get { return foto_estado; }
             set { foto_estado = value; }
         }
-        private int grupo_id;
+
 
         public int Grupo_id
         {

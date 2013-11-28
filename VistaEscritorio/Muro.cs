@@ -53,8 +53,9 @@ namespace VistaEscritorio
 
         private void listPublicaciones_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Publicacion publicacion=(Publicacion)listPublicaciones.SelectedItem;
-            txtDetalle.Text = publicacion.Mensaje;
+            Estados estado=(Estados)listPublicaciones.SelectedItem;
+            txtDetalle.Text = estado.Mensaje;
+            imagen.ImageLocation = estado.Foto_estado;
             //falta mostrar la imagen
         }
     }

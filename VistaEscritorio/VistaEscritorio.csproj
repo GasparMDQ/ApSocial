@@ -89,6 +89,12 @@
     <Compile Include="nuevaFoto.Designer.cs">
       <DependentUpon>nuevaFoto.cs</DependentUpon>
     </Compile>
+    <Compile Include="NuevoEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NuevoEstado.Designer.cs">
+      <DependentUpon>NuevoEstado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolicitudesList.cs">
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="nuevaFoto.resx">
       <DependentUpon>nuevaFoto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NuevoEstado.resx">
+      <DependentUpon>NuevoEstado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

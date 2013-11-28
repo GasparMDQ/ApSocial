@@ -104,6 +104,12 @@ namespace VistaEscritorio
             unAlbum.ShowDialog();
         }
 
+        private void nuevoEstadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NuevoEstado formNuevoEstado = new NuevoEstado();
+            formNuevoEstado.ShowDialog();
+        }
+
 
     }
 }
