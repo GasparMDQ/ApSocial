@@ -8,6 +8,14 @@ namespace ApSocial.Entidades
 
         private string foto_estado;
 
+        private List<Comentarios> comentarios;
+
+        public List<Comentarios> Comentarios
+        {
+            get { return comentarios; }
+            set { comentarios = value; }
+        }
+
         public string Foto_estado
         {
             get { return foto_estado; }
@@ -41,15 +49,9 @@ namespace ApSocial.Entidades
             this.Usuario_origen = usuario_origen;
         }
 
-        ~Estados()
-        {
+        ~Estados() { }
 
-        }
-
-        public override void Dispose()
-        {
-
-        }
+        public override void Dispose() { }
         public override string ToString()
         {
             return this.Mensaje + " " + this.Usuario_origen;

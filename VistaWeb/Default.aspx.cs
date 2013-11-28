@@ -6,8 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ApSocial.Controladora.Amistades;
 using ApSocial.Controladora.Estado;
-using ApSocial.Controladora.Publicaciones;
 using ApSocial.Controladora.Usuarios;
+using ApSocial.Controladora.Comentario;
 using ApSocial.Entidades;
 
 namespace VistaWeb
@@ -16,12 +16,14 @@ namespace VistaWeb
     {
         private AmistadesController controladoraAmistad = new AmistadesController();
         private EstadoController controladoraEstado = new EstadoController();
-        private PublicacionController controladoraPublicacion = new PublicacionController();
         private UsuarioController controladoraUsuario = new UsuarioController();
+        private ComentariosController controladoraComentario = new ComentariosController();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.refreshData();
+            if (!IsPostBack) {
+                this.refreshData();
+            }
         }
 
         private void refreshData()
@@ -77,6 +79,24 @@ namespace VistaWeb
                 }
             } else {
                 return null;
+            }
+        }
+
+        protected void Publicaciones_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "newComment") {
+                int pubId = Convert.ToInt32(e.CommandArgument.ToString());
+                Repeater repeater = (Repeater)source;
+                Control FooterTemplate = repeater.Controls[repeater.Controls.Count - 1];
+                TextBox messageBox = FooterTemplate.FindControl("newComentario") as TextBox;
+                string mensaje = messageBox.Text;
+
+                try {
+                    controladoraComentario.nuevoComentario(Convert.ToInt32(Session["usuarioLogueado"].ToString()), mensaje, pubId);
+                    this.refreshData();
+                } catch (Exception ex) {
+                    throw ex;
+                }
             }
         }
 

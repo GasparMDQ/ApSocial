@@ -6,7 +6,7 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible" />
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>Mi Aplicación Social</title>
     <link href="~/Styles/AppSocial.css" rel="stylesheet" type="text/css" />
     <link href="~/Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Styles/chosen.min.css" rel="stylesheet" type="text/css" />

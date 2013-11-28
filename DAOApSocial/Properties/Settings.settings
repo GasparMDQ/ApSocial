@@ -5,10 +5,10 @@
     <Setting Name="AplicacionSocialConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=.\SQLEXPRESS;Initial Catalog=AplicacionSocial;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=utnmdpdb.mssql.somee.com;Initial Catalog=utnmdpdb;Persist Security Info=False;User ID=GasparMDQ_SQLLogin_1;Password=8wggnj7byo;Packet Size=4096;Workstation ID=utnmdpdb.mssql.somee.com&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=.\SQLEXPRESS;Initial Catalog=AplicacionSocial;Integrated Security=True</Value>
+      <Value Profile="(Default)">Data Source=utnmdpdb.mssql.somee.com;Initial Catalog=utnmdpdb;Persist Security Info=False;User ID=GasparMDQ_SQLLogin_1;Password=8wggnj7byo;Packet Size=4096;Workstation ID=utnmdpdb.mssql.somee.com</Value>
     </Setting>
   </Settings>
 </SettingsFile>

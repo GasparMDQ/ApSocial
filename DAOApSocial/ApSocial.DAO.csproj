@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDeDatos\DAOComentarios.cs" />
     <Compile Include="BaseDeDatos\DAOEtiqueta.cs" />
     <Compile Include="BaseDeDatos\DAOEstados.cs" />
     <Compile Include="BaseDeDatos\DAOFotos.cs" />

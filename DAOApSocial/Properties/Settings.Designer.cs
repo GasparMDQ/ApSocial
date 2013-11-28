@@ -3,8 +3,8 @@
 //     Este código fue generado por una herramienta.
 //     Versión de runtime:4.0.30319.18052
 //
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
+//     Los cambios en este archivo podrían causar un comportamiento incorrecto y se perderán si
+//     se vuelve a generar el código.
 // </auto-generated>
 //------------------------------------------------------------------------------
 
@@ -26,8 +26,9 @@ namespace ApSocial.DAO.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;Initial Catalog=AplicacionSocial;Integrated Security=Tru" +
-            "e")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=utnmdpdb.mssql.somee.com;Initial Catalog=utnmdpdb;Persist Security In" +
+            "fo=False;User ID=GasparMDQ_SQLLogin_1;Password=8wggnj7byo;Packet Size=4096;Works" +
+            "tation ID=utnmdpdb.mssql.somee.com")]
         public string AplicacionSocialConnectionString {
             get {
                 return ((string)(this["AplicacionSocialConnectionString"]));

@@ -131,13 +131,13 @@ namespace ApSocial.DAO.BaseDeDatos
             }
         }
 
-        public Solicitud_Amistad getOneByUsers(Usuario usuarioSolicitante, Usuario usuarioSolicitado)
+        public Solicitud_Amistad getOneByUsers(int usuarioSolicitante, int usuarioSolicitado)
         {
             string cmdText = "SELECT id, solicitante, solicitado, aceptada FROM solicitud_amistad WHERE (solicitado = @Solicitado AND solicitante = @Solicitante) OR (solicitado = @Solicitante AND solicitante = @Solicitado)";
             try {
                 Dictionary<string, Object> parametros = new Dictionary<string, Object>();
-                parametros.Add("@Solicitante", usuarioSolicitante.Id);
-                parametros.Add("@Solicitado", usuarioSolicitado.Id);
+                parametros.Add("@Solicitante", usuarioSolicitante);
+                parametros.Add("@Solicitado", usuarioSolicitado);
                 return this.searchOneBy(cmdText, parametros);
             } catch (Exception ex) {
                 throw new Exception("No se pudieron cargar los datos (DAO)", ex);

@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="Página principal" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Default.aspx.cs" Inherits="VistaWeb._Default" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="ApSocial.Entidades" %>
 <%@ Register Src="~/FriendList.ascx" TagName="FriendList" TagPrefix="apsocial" %> 
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -35,12 +37,25 @@
 	                <div class="row">
 		                <div class="well well-sm ">
 				            <div class="btn-group pull-right">
-                                <a href="#" title="<%# Eval("Usuario") %>"><img class="img-responsive img-thumbnail app-wall-thumb" src="<%# Eval("foto_estado") %>" alt="Imagen" /></a>
+                                <a href="#" title="<%# DataBinder.Eval(Container.DataItem,"Usuario") %>"><img class="img-responsive img-thumbnail app-wall-thumb" src="<%# DataBinder.Eval(Container.DataItem,"foto_estado") %>" alt="Imagen" /></a>
 				            </div>
 			                <blockquote>
-				                <p><%# Eval("Mensaje") %></p>
-                                <small><%# Eval("Usuario") %></small>
+				                <p><%# DataBinder.Eval(Container.DataItem,"Mensaje") %></p>
+                                <small><%# DataBinder.Eval(Container.DataItem,"Usuario") %></small>
 			                </blockquote>
+                            <!-- Lista de Comentarios -->
+                            <asp:Repeater ID="Comentarios" runat="server" DataSource='<%# Eval("Comentarios") %>' onitemcommand="Publicaciones_ItemCommand">
+                                <ItemTemplate>
+                                    <div class="well well-sm ">
+                                        <small><%# Eval("Usuario") %></small>: <%# Eval("Mensaje") %>
+                                    </div>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    <asp:TextBox ID="newComentario" CssClass="form-control" runat="server" placeholder="Escribe un comentario ..."></asp:TextBox>
+                                    <asp:Button ID="newComentarioBtn" CssClass="btn btn-default btn-sm" runat="server" Text="Enviar" UseSubmitBehavior="False" CommandName="newComment" CommandArgument='<%# DataBinder.Eval(((RepeaterItem)Container.Parent.Parent).DataItem,"Id") %>' />
+                                </FooterTemplate>
+                            </asp:Repeater>
+                            <!-- Fin de Lista de Comentarios -->
 		                </div>
 	                </div>
                 </ItemTemplate>

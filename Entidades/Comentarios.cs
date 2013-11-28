@@ -21,61 +21,47 @@ namespace ApSocial.Entidades
         }
 
         private DateTime fecha_creacion;
-        private string mensaje;
-        private bool publico;
-        public Usuario usuario_origen;
-
-
-        public Comentarios()
-        {
-
-        }
-
-        ~Comentarios()
-        {
-
-        }
-
-        public virtual void Dispose()
-        {
-
-        }
 
         public DateTime Fecha_creacion
         {
-            get
-            {
-                return fecha_creacion;
-            }
-            set
-            {
-                fecha_creacion = value;
-            }
+            get { return fecha_creacion; }
+            set { fecha_creacion = value; }
         }
+
+        private string mensaje;
 
         public string Mensaje
         {
-            get
-            {
-                return mensaje;
-            }
-            set
-            {
-                mensaje = value;
-            }
+            get { return mensaje; }
+            set { mensaje = value; }
         }
 
-        public bool Publico
+        private int usuarioId;
+
+        public int UsuarioId
         {
-            get
-            {
-                return publico;
-            }
-            set
-            {
-                publico = value;
-            }
+            get { return usuarioId; }
+            set { usuarioId = value; }
         }
 
-    }
+        //No mapeado, utilizado para mostrar el usuario que creo que comentario
+        private string usuario;
+
+        public string Usuario
+        {
+            get { return usuario; }
+            set { usuario = value; }
+        }
+
+        public Comentarios(string msg, int userId, int pubId) {
+            this.Mensaje = msg;
+            this.UsuarioId = userId;
+            this.IdPublicacion = pubId;
+            this.Fecha_creacion = DateTime.Now;
+        }
+
+        ~Comentarios() { }
+
+        public virtual void Dispose() { }
+     }
 }

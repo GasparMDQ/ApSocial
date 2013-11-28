@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Album\AlbumController.cs" />
     <Compile Include="Amistades\AmistadesController.cs" />
+    <Compile Include="Comentarios\ComentariosController.cs" />
     <Compile Include="Estado\EstadoController.cs" />
     <Compile Include="Foto\EtiquetaController.cs" />
     <Compile Include="Foto\FotoController.cs" />

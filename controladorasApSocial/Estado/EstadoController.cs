@@ -7,6 +7,7 @@ using ApSocial.Entidades;
 using ApSocial.DAO.BaseDeDatos;
 using ApSocial.Controladora.Usuarios;
 using ApSocial.Controladora.Amistades;
+using ApSocial.Controladora.Comentario;
 
 namespace ApSocial.Controladora.Estado
 {
@@ -15,6 +16,7 @@ namespace ApSocial.Controladora.Estado
         DAOEstados dataEstados = DAOEstados.Instance();
         UsuarioController usuariosController = new UsuarioController();
         AmistadesController amistadesController = new AmistadesController();
+        ComentariosController controladoraComentarios = new ComentariosController();
 
         public void nuevoEstado(int idUsuario, string mensaje, string url)
         {
@@ -44,7 +46,7 @@ namespace ApSocial.Controladora.Estado
 
             try {
                 foreach (Usuario usuario in amistadesController.getAllFriendsFromUser(userId)) {
-                    estados.AddRange(getEstadosByUser(usuario.Id, true));
+                    estados.AddRange(getEstadosByUser(usuario.Id, true, userId));
                 }
             } catch (Exception ex) {
                 throw new Exception("No se pudieron obtener los estados publicos de las amistades del usuario ID: " +userId, ex);
@@ -55,7 +57,7 @@ namespace ApSocial.Controladora.Estado
         /**
          * Devuelve los estados PUBLICOS o PRIVADOS del usuario 
          */
-        public List<Estados> getEstadosByUser(int userId, bool isPublico)
+        public List<Estados> getEstadosByUser(int userId, bool isPublico, int sessionUserId)
         {
             List<Estados> estados = new List<Estados>();
             try {
@@ -64,7 +66,7 @@ namespace ApSocial.Controladora.Estado
                         estados.Add(estado);
                     }
                 }
-                return this.stringifyUserList(estados);
+                return this.addComentariosToList(this.stringifyUserList(estados), sessionUserId);
             } catch (Exception ex) {
                 throw new Exception("No se pudieron recuperar los estados del usuario ID " + userId, ex);
             }
@@ -76,7 +78,7 @@ namespace ApSocial.Controladora.Estado
         public List<Estados> getEstadosByUser(int userId)
         {
             try {
-                return this.stringifyUserList(dataEstados.searchByUserId(userId).OrderByDescending(p => p.Fecha_creado).ToList());
+                return this.addComentariosToList(this.stringifyUserList(dataEstados.searchByUserId(userId).OrderByDescending(p => p.Fecha_creado).ToList()), userId);
             } catch (Exception ex) {
                 throw new Exception("No se pudieron recuperar los estados del usuario ID " + userId, ex);
             }
@@ -101,6 +103,27 @@ namespace ApSocial.Controladora.Estado
                 throw new Exception("No se pudo obtener el string del usuario para el estado ID: " + estado.Id, ex);
             }
         }
+
+        public List<Estados> addComentariosToList(List<Estados> lista, int userId)
+        {
+            List<Estados> estados = new List<Estados>();
+            foreach (Estados pub in lista) {
+                estados.Add(this.addComentariosToEstado(pub, userId));
+            }
+            return estados;
+
+        }
+
+        private Estados addComentariosToEstado(Estados estado, int userId)
+        {
+            try {
+                estado.Comentarios = controladoraComentarios.getComentariosByPublicacion(estado.Id, userId);
+                return estado;
+            } catch (Exception ex) {
+                throw new Exception("Hubo un problema el intentar obtener los comentarios para el estado ID " + estado.Id, ex);
+            }
+        }
+
     }
 
 }
