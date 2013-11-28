@@ -34,10 +34,11 @@ namespace ApSocial.DAO.Lista
         }
 
 
-        public void add(Usuario usuario)
+        public int add(Usuario usuario)
         {
             usuario.Id = this.getId();
             listaUsuarios.Add(usuario);
+            return usuario.Id;
         }
 
         public Usuario searchById(int id)

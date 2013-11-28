@@ -30,10 +30,11 @@ namespace ApSocial.DAO.Lista
             return contadorEstados;
         }
 
-        public void add(Estados estado)
+        public int add(Estados estado)
         {
             estado.Id= getId();
             listaDeEstados.Add(estado);
+            return estado.Id;
         }
 
 

@@ -21,7 +21,7 @@ namespace ApSocial.DAO.BaseDeDatos
             return _instance;
         }
 
-        public void add(Solicitud_Amistad solicitud)
+        public int add(Solicitud_Amistad solicitud)
         {
             string cmdText = "INSERT INTO solicitud_amistad (solicitante, solicitado, aceptada) VALUES (@Solicitante,@Solicitado,@Aceptada)";
             Dictionary<string, Object> parametros = new Dictionary<string, Object>();
@@ -29,7 +29,7 @@ namespace ApSocial.DAO.BaseDeDatos
             parametros.Add("@Solicitado", solicitud.Solicitado);
             parametros.Add("@Aceptada", solicitud.Aceptada);
             try {
-                this.setData(cmdText, parametros);
+                return this.setData(cmdText, parametros);
             } catch (Exception ex) {
                 throw new Exception("No se pudo insertar la solicitud en la base de datos", ex);
             }

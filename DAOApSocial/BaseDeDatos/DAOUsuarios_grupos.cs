@@ -23,7 +23,7 @@ namespace ApSocial.DAO.BaseDeDatos
         public Usuario_Grupo searchById(int id) {
             throw new Exception("No se puede buscar por ID una etiqueta");
         }
-        public void add(Usuario_Grupo usuarioGrupo)
+        public int add(Usuario_Grupo usuarioGrupo)
         {
             string cmdText = "INSERT INTO usuarios_grupos (idUsuario,idGrupo) VALUES (@idUsuario,@idGrupo)";
             Dictionary<string, Object> parametros = new Dictionary<string, Object>();
@@ -31,7 +31,7 @@ namespace ApSocial.DAO.BaseDeDatos
             parametros.Add("@idGrupo", usuarioGrupo.IdGrupo);
             try
             {
-                this.setData(cmdText, parametros);
+                return this.setData(cmdText, parametros);
             }
             catch (Exception ex)
             {

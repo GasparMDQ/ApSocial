@@ -30,10 +30,11 @@ namespace ApSocial.DAO.Lista
             return contadorSolicitudes;
         }
 
-        public void add(Solicitud_Amistad solicitud)
+        public int add(Solicitud_Amistad solicitud)
         {
             solicitud.Id= getId();
             listaSolicitudes.Add(solicitud);
+            return solicitud.Id;
         }
 
         public void remove(Solicitud_Amistad solicitud)

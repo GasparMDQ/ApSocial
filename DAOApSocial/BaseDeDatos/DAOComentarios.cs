@@ -31,7 +31,7 @@ namespace ApSocial.DAO.BaseDeDatos
             }
         }
 
-        public void add(Comentarios comentario)
+        public int add(Comentarios comentario)
         {
             string cmdText;
             Dictionary<string, Object> parametros = new Dictionary<string, Object>();
@@ -42,7 +42,7 @@ namespace ApSocial.DAO.BaseDeDatos
             parametros.Add("@Mensaje", comentario.Mensaje);
             parametros.Add("@Usuario", comentario.UsuarioId);
             try {
-                int resultado = this.setData(cmdText, parametros, true);
+                return this.setData(cmdText, parametros, true);
             } catch (Exception ex) {
                 throw new Exception("No se pudo insertar el comentario en la base de datos", ex);
             }

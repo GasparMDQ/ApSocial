@@ -21,14 +21,14 @@ namespace ApSocial.DAO.BaseDeDatos
             return _instance;
         }
 
-        public void add(Grupos grupo)
+        public int add(Grupos grupo)
         {
             string cmdText = "INSERT INTO grupos (descripcion, sistema) VALUES (@Descripcion,@Sistema)";
             Dictionary<string, Object> parametros = new Dictionary<string, Object>();
             parametros.Add("@Descripcion", grupo.Descripcion);
             parametros.Add("@Sistema", grupo.Sistema);
             try {
-                this.setData(cmdText, parametros);
+                return this.setData(cmdText, parametros);
             } catch (Exception ex) {
                 throw new Exception("No se pudo insertar el grupo en la base de datos", ex);
             }

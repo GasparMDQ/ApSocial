@@ -31,7 +31,7 @@ namespace ApSocial.DAO.BaseDeDatos
             }
         }
 
-        public void add(Usuario usuario)
+        public int add(Usuario usuario)
         {
             string cmdText = "insert into usuarios (apellido, nombre, email, password, residencia, foto_usuario, fechaDeNacimiento, enabled) values (@Apellido,@Nombre,@Email,@Password,@Residencia,@FotoUsuario,@FechaDeNacimiento,@Enabled)";
             Dictionary<string, Object> parametros = new Dictionary<string, Object>();
@@ -45,7 +45,7 @@ namespace ApSocial.DAO.BaseDeDatos
             parametros.Add("@Enabled", usuario.isEnabled());
             try
             {
-                this.setData(cmdText, parametros);
+                return this.setData(cmdText, parametros);
             } catch (Exception ex) {
                 throw new Exception("No se pudo insertar el usuario en la base de datos", ex);
             }

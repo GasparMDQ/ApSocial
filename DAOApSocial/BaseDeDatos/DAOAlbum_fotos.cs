@@ -31,16 +31,16 @@ namespace ApSocial.DAO.BaseDeDatos
             }
         }
 
-        public void add(Album_fotos album_fotos)
+        public int add(Album_fotos album_fotos)
         {
-            string cmdText = "INSERT INTO album_fotos (fecha_creado, mensaje, publico, usuario_origen) VALUES (@Fecha, @Mensaje, @Publico, @Usuario)";
+            string cmdText = "INSERT INTO album_fotos (fecha_creado, mensaje, publico, usuario_origen) OUTPUT INSERTED.ID  VALUES (@Fecha, @Mensaje, @Publico, @Usuario)";
             Dictionary<string, Object> parametros = new Dictionary<string, Object>();
             parametros.Add("@Fecha", album_fotos.Fecha_creado);
             parametros.Add("@Mensaje", album_fotos.Mensaje);
             parametros.Add("@Publico", album_fotos.Publico);
             parametros.Add("@Usuario", album_fotos.Usuario_origen);
             try {
-                this.setData(cmdText, parametros);
+                return this.setData(cmdText, parametros, true);
             } catch (Exception ex) {
                 throw new Exception("No se pudo insertar el estado en la base de datos", ex);
             }

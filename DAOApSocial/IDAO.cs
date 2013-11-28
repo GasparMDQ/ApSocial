@@ -7,7 +7,7 @@ namespace ApSocial.DAO
 {
     public interface IDAO<t>
     {
-        void add(t dato);
+        int add(t dato);
         void remove(t dato);
         void modify(t dato);
         List<t> getAll();

@@ -16,6 +16,7 @@ namespace VistaEscritorio
     public partial class nuevaFoto : Form
     {
         private int idFoto=-1;
+        private int albumId;
         PublicacionController controladoraPublicaciones = new PublicacionController();
         AmistadesController controladoraAmistad = new AmistadesController();
         FotoController controladoraFoto = new FotoController();
@@ -26,11 +27,13 @@ namespace VistaEscritorio
             get { return idFoto; }
             set { idFoto = value; }
         }
+        public nuevaFoto() { }
 
-        public nuevaFoto()
+        public nuevaFoto(int album)
         {
             InitializeComponent();
             cargarAmigos(listAmigos);
+            this.albumId = album;
         }
 
         private void buscarArchivoBtn_Click(object sender, EventArgs e)
@@ -70,8 +73,7 @@ namespace VistaEscritorio
                 verificacion = verificarDatos();
                 if (verificarDatos() == "")
                 {
-                    recuperarEtiquetados(listAmigos);
-                    Fotos foto = controladoraFoto.nuevaFoto(1, pathTXT.Text, recuperarEtiquetados(listAmigos));//FIX THIS ALBUM ID
+                    Fotos foto = controladoraFoto.nuevaFoto(this.albumId, pathTXT.Text, recuperarEtiquetados(listUsuariosEtiquetados));
                     this.IdFoto = foto.Id;
                     this.Close();
                 }
@@ -79,7 +81,7 @@ namespace VistaEscritorio
                     MessageBox.Show(verificarDatos());
                 }
             }catch (Exception ex){
-                MessageBox.Show("no se ha podido cargar la foto "+ex.Message);
+                MessageBox.Show("No se ha podido cargar la foto "+ex.Message);
             }
         }
 

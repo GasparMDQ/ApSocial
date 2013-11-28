@@ -50,9 +50,9 @@ namespace VistaEscritorio
         {
             try
             {
-                Album_fotos album = new Album_fotos(albumNameTXT.Text, Session.IdUsuarioLogueado);
+                int albumId = controladoraAlbum.nuevoAlbum(albumNameTXT.Text, Session.IdUsuarioLogueado);
                 //albumid= necesito un metodo para buscar en el dao y q me devuelve el id del album q acabo de insertar
-                nuevaFoto newPic = new nuevaFoto();
+                nuevaFoto newPic = new nuevaFoto(albumId);
                 newPic.ShowDialog();
                 int fotoId = newPic.IdFoto;
                 if (fotoId != -1)
@@ -61,7 +61,7 @@ namespace VistaEscritorio
                 }
             }
             catch (Exception ex){
-                MessageBox.Show("error al cargar la foto  " + ex.Message);
+                MessageBox.Show("Error al cargar la foto " + ex.Message);
             }
 
         }

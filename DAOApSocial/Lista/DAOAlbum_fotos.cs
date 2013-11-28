@@ -29,10 +29,11 @@ namespace ApSocial.DAO.Lista
             return contadorAlbum;
         }
 
-        public void add(Album_fotos album) 
+        public int add(Album_fotos album) 
         {
             album.Id = getId();
             listaAlbum.Add(album);
+            return album.Id;
         }
         public Album_fotos searchById(int id)
         {

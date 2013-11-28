@@ -13,7 +13,6 @@ namespace VistaEscritorio
     public partial class LogIn : Form
     {
         private UsuarioController controladora = new UsuarioController();
-        MenuStrip menu;
 
         public LogIn()
         {

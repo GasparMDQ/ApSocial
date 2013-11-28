@@ -34,10 +34,11 @@ namespace ApSocial.DAO.Lista
             get { return listaComentarios; }
             set { listaComentarios = value; }
         }
-        public void add(Comentarios comentario)
+        public int add(Comentarios comentario)
         {
             comentario.Id = getId();
             listaComentarios.Add(comentario);
+            return comentario.Id;
         }
 
         public void remove(Comentarios comentario)

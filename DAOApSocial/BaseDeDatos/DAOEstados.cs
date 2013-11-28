@@ -31,7 +31,7 @@ namespace ApSocial.DAO.BaseDeDatos
             }
         }
 
-        public void add(Estados estado)
+        public int add(Estados estado)
         {
             string cmdText;
             Dictionary<string, Object> parametros = new Dictionary<string, Object>();
@@ -51,7 +51,7 @@ namespace ApSocial.DAO.BaseDeDatos
                 parametros.Add("@Foto", estado.Foto_estado);
             }
             try {
-                int resultado = this.setData(cmdText, parametros, true);
+                return this.setData(cmdText, parametros, true);
             } catch (Exception ex) {
                 throw new Exception("No se pudo insertar el estado en la base de datos", ex);
             }

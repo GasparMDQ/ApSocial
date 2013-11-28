@@ -25,10 +25,11 @@ namespace ApSocial.DAO.Lista
             return _instance;
         }
 
-        public void add(Fotos foto) 
+        public int add(Fotos foto) 
         {
             foto.Id = getId();
             listaFotos.Add(foto);
+            return foto.Id;
         }
        
         private int getId() {

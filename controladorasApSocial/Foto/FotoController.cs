@@ -19,8 +19,8 @@ namespace ApSocial.Controladora.Foto
             Fotos foto;
             try {
                 foto = new Fotos(url, albumId);
-                daoFotos.add(foto);
-                //foto=daoFotos. tengo q buscar la foto en el dao apra que esto me devuelva el id de la foto
+                int fotoId = daoFotos.add(foto);
+                foto.Id = fotoId;
             } catch (Exception ex) {
                 throw ex;
             }

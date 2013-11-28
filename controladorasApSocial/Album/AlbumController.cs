@@ -15,12 +15,12 @@ namespace ApSocial.Controladora.Album
         DAOAlbum_fotos daoAlbum = DAOAlbum_fotos.Instance();
 
 
-        public void nuevoAlbum(string mensaje, int usuario_origen)
+        public int nuevoAlbum(string mensaje, int usuario_origen)
         {
             Album_fotos album;
             try {
                 album = new Album_fotos(mensaje, usuario_origen);
-                daoAlbum.add(album);
+                return daoAlbum.add(album);
             } catch (Exception ex) {
                 throw ex;
             }

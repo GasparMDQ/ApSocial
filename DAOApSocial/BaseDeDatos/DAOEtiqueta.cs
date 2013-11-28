@@ -31,14 +31,14 @@ namespace ApSocial.DAO.BaseDeDatos
             }
         }
 
-        public void add(Etiqueta etiqueta)
+        public int add(Etiqueta etiqueta)
         {
             string cmdText = "INSERT INTO etiqueta (fotoId, usuarioId) VALUES (@FotoId,@UsuarioId)";
             Dictionary<string, Object> parametros = new Dictionary<string, Object>();
             parametros.Add("@FotoId", etiqueta.FotoId);
             parametros.Add("@UsuarioId", etiqueta.UsuarioId);
             try {
-                this.setData(cmdText, parametros);
+                return this.setData(cmdText, parametros);
             } catch (Exception ex) {
                 throw new Exception("No se pudo insertar el estado en la base de datos", ex);
             }
