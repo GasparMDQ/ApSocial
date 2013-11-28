@@ -19,13 +19,7 @@ namespace VistaEscritorio
         public ApSocial()
         {
             InitializeComponent();
-            habilitarMenu();
-        }
-        public void habilitarMenu() {
-            if (Session.IdUsuarioLogueado > 0) {
-                amistadesToolStripMenuItem.Enabled = true;
-                publicacionesToolStripMenuItem.Enabled = true;
-            }
+            reloadMenu();
         }
 
         private void ingresarToolStripMenuItem_Click(object sender, EventArgs e)
