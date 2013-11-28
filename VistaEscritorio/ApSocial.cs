@@ -30,7 +30,7 @@ namespace VistaEscritorio
 
         private void ingresarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LogIn formularioIngreso = new LogIn(menuStrip);
+            LogIn formularioIngreso = new LogIn();
             formularioIngreso.ShowDialog();
         }
 
@@ -71,6 +71,8 @@ namespace VistaEscritorio
         private void reloadMenu()
         {
             if(controladora.existeUsuario(Session.IdUsuarioLogueado)){
+                amistadesToolStripMenuItem.Enabled = true;
+                publicacionesToolStripMenuItem.Enabled = true;
                 modificarUsuarioMenuItem.Enabled = true;
                 bajaUsuarioMenuItem.Enabled = true;
             }
@@ -122,8 +124,10 @@ namespace VistaEscritorio
             acercade.ShowDialog();
         }
         public void deshabilitarMenu(MenuStrip m) {
-            m.Items[2].Enabled = false;
-            m.Items[3].Enabled = false;  
+            amistadesToolStripMenuItem.Enabled = false;
+            publicacionesToolStripMenuItem.Enabled = false;
+            modificarUsuarioMenuItem.Enabled = false;
+            bajaUsuarioMenuItem.Enabled = false;
         }
 
         private void desloguearToolStripMenuItem_Click(object sender, EventArgs e)
